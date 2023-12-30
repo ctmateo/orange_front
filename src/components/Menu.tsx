@@ -39,7 +39,7 @@ const Menu = () => {
           {data.map((item) =>
             item.type === "pizzaC" ? (
               <section key={item.id} className="wrapper-item-pizza">
-                <p className="title-pizza">{item.title}</p>
+                <p className="title-type-menu">{item.title}</p>
                 <p className="description">{item.description}</p>
               </section>
             ) : null
@@ -60,8 +60,8 @@ const Menu = () => {
           {data.map((item) =>
             item.type === "lasagna" ? (
               <div key={item.id} className="wrapper-item-lasagna">
-                <p>{item.title}</p>
-                <p>{item.description}</p>
+                <p className="title-type-menu">{item.title}</p>
+                <p className="description">{item.description}</p>
                 <span>{item.price}</span>
               </div>
             ) : null
