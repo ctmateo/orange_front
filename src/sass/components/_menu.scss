@@ -6,13 +6,24 @@ h2{
 }
 span{
   font-family: 'Bold';
+  font-size: 24px;
+}
+
+.interline{
+  margin: 20px;
+}
+
+.wrapper-horn{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
 }
 
 .title-type-menu{
+  text-transform: uppercase;
   font-family: 'Semibold';
-  font-size: 32px;
+  font-size: 24px;
 }
 .description{
   font-family: 'Medium';
-  font-size: 20px;
+  font-size: 24px;
 }
