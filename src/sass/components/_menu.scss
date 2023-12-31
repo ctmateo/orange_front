@@ -25,7 +25,7 @@ span{
 }
 
 .wrapper-horn{
-  padding: 80px;
+  padding: 70px;
 }
 
 .wrapper-columns {
@@ -37,12 +37,8 @@ span{
   justify-content: center;
   flex-direction: column;
 }
-.column-1,.column-2{
-  margin-right: 50px;
-
-}
-.wrapper-item-special-pizza{
-  width: 550px;
+.column-2{
+  margin: 0 50px 0 50px
 }
 .wrapper-special-pizza{
   width: 100%;
@@ -52,7 +48,7 @@ span{
   margin-top: 50px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 10px;
 }
 
 .card-publi,
