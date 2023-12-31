@@ -68,7 +68,7 @@ const Menu = () => {
           <div className="wrapper-pizza">
             <div className="wrapper-classic-pizza">
               <h2>Pizza clasica</h2>
-              {renderizarElementosPizza("pizzaC", 3)}
+              {renderizarElementosPizza("pizzaC", 2)}
             </div>
             <div className="grid-template-three">
               <div className="wrapper-special-pizza">
