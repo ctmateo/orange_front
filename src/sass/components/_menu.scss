@@ -24,21 +24,21 @@ span{
   font-size: 28px;
 }
 
-.wrapper-horn{
-  padding: 70px;
-}
+
 
 .wrapper-columns {
   display: flex;
+  justify-content: space-between;
 }
 
 .wrapper-classic-pizza{
+  padding: 70px;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 .column-2{
-  margin: 0 50px 0 50px
+  margin: 0 70px 0 70px
 }
 .wrapper-special-pizza{
   width: 100%;
@@ -49,6 +49,13 @@ span{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
+}
+
+.double-grid{
+  padding: 70px;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 70px;
 }
 
 .card-publi,
@@ -69,12 +76,15 @@ span{
 }
 
 .wrapper-lasagna {
+  padding: 70px;
   height: 100%;
 }
 .wrapper-item-burguer{
   order: -1;
 }
 
-.wrapper-burguer, .wrapper-saupotato, .wrapper-corn, .wrapper-grilled, .wrapper-hotdog, .wrapper-bbq{
-  padding: 70px;
+
+.wrapper-burguer{
+  display: flex;
+  flex-direction: column-reverse;
 }

@@ -50,6 +50,8 @@ const Menu = () => {
                 <section key={item.id} className="interline">
                   <p className="title-type-menu">{item.title}</p>
                   <p className="description">{item.description}</p>
+                  
+                  <span>{item.type === 'lasagna' ? item.price : null}</span>
                 </section>
               ))}
           </div>
@@ -68,32 +70,14 @@ const Menu = () => {
           <div className="wrapper-pizza">
             <div className="wrapper-classic-pizza">
               <h2>Pizza clasica</h2>
-              {renderizarElementosPizza("pizzaC", 2)}
+              {renderizarElementosPizza("pizzaC", 3)}
             </div>
-            <div className="grid-template-three">
+            <div className="double-grid">
               <div className="wrapper-special-pizza">
                 <div className="wrapper-item-special-pizza">
                   <h2>Pizza especial</h2>
                   {renderizarElementosPizza("pizzaE", 1)}
                 </div>
-              </div>
-              <div className="column-grid">
-                <div className="wrapper-lasagna">
-                  <h2>Lasagna</h2>
-                  {data.map((item) =>
-                    item.type === "lasagna" ? (
-                      <div
-                        key={item.id}
-                        className="interline wrapper-item-lasagna"
-                      >
-                        <p className="title-type-menu">{item.title}</p>
-                        <p className="description">{item.description}</p>
-                        <span>${item.price}</span>
-                      </div>
-                    ) : null
-                  )}
-                </div>
-
               </div>
               <div className="column-grid">
                 <div className="card-publi"></div>
@@ -102,80 +86,90 @@ const Menu = () => {
             </div>
           </div>
         </article>
+        <div className="wrapper-lasagna">
+          <h2>Lasagna</h2>
+          {renderizarElementosPizza('lasagna',3)}
+        </div>
 
         {/* //Hamburguesas*/}
-        <article className="wrapper-burguer">
-          <h2 className="interline">Hamburguesas</h2>
-          {data.map((item) =>
-            item.type === "burguer" ? (
-              <div key={item.id} className="interline wrapper-item-burguer">
-                <p className="title-type-menu">{item.title}</p>
-                <p className="description">{item.description}</p>
-                <span className="price">${item.price}</span>
-              </div>
-            ) : null
-          )}
-        </article>
-        <article className="wrapper-saupotato">
-          <h2 className="interline">Salchipapas tradicional</h2>
-          {data.map((item) =>
-            item.type === "saupotato" ? (
-              <div key={item.id} className="interline wrapper-item-saupotato">
-                <p className="title-type-menu">{item.title}</p>
-                <p className="description">{item.description}</p>
-                <span>${item.price}</span>
-              </div>
-            ) : null
-          )}
-        </article>
-        <article className="wrapper-corn">
-          <h2 className="interline">Mazorcada</h2>
-          {data.map((item) =>
-            item.type === "corn" ? (
-              <div key={item.id} className="interline wrapper-item-corn">
-                <p className="title-type-menu">{item.title}</p>
-                <p className="description">{item.description}</p>
-                <span>${item.price}</span>
-              </div>
-            ) : null
-          )}
-        </article>
-        <article className="wrapper-grilled">
-          <h2 className="interline">A la plancha</h2>
-          {data.map((item) =>
-            item.type === "grilled" ? (
-              <div key={item.id} className="interline wrapper-item-grilled">
-                <p className="title-type-menu">{item.title}</p>
-                <p className="description">{item.description}</p>
-                <span>${item.price}</span>
-              </div>
-            ) : null
-          )}
-        </article>
-        <article className="wrapper-bbq">
-          <h2 className="interline">Barbacoa</h2>
-          {data.map((item) =>
-            item.type === "bbq" ? (
-              <div key={item.id} className="interline wrapper-item-bbq">
-                <p className="title-type-menu">{item.title}</p>
-                <p className="description">{item.description}</p>
-                <span>${item.price}</span>
-              </div>
-            ) : null
-          )}
-        </article>
-        <article className="wrapper-hotdog">
-          <h2 className="interline">Hot Dog</h2>
-          {data.map((item) =>
-            item.type === "hotdog" ? (
-              <div key={item.id} className="interline wrapper-item-hotdog">
-                <p className="title-type-menu">{item.title}</p>
-                <p className="description">{item.description}</p>
-                <span>${item.price}</span>
-              </div>
-            ) : null
-          )}
-        </article>
+        <div className="double-grid">
+          <article className="wrapper-burguer">
+            <h2 className="interline">Hamburguesas</h2>
+            {data.map((item) =>
+              item.type === "burguer" ? (
+                <div key={item.id} className="interline wrapper-item-burguer">
+                  <p className="title-type-menu">{item.title}</p>
+                  <p className="description">{item.description}</p>
+                  <span className="price">${item.price}</span>
+                </div>
+              ) : null
+            )}
+          </article>
+          <article className="wrapper-hotdog">
+            <h2 className="interline">Hot Dog</h2>
+            {data.map((item) =>
+              item.type === "hotdog" ? (
+                <div key={item.id} className="interline wrapper-item-hotdog">
+                  <p className="title-type-menu">{item.title}</p>
+                  <p className="description">{item.description}</p>
+                  <span>${item.price}</span>
+                </div>
+              ) : null
+            )}
+          </article>
+        </div>
+        <div className="double-grid">
+          <article className="wrapper-saupotato">
+            <h2 className="interline">Salchipapas tradicional</h2>
+            {data.map((item) =>
+              item.type === "saupotato" ? (
+                <div key={item.id} className="interline wrapper-item-saupotato">
+                  <p className="title-type-menu">{item.title}</p>
+                  <p className="description">{item.description}</p>
+                  <span>${item.price}</span>
+                </div>
+              ) : null
+            )}
+          </article>
+          <article className="wrapper-corn">
+            <h2 className="interline">Mazorcada</h2>
+            {data.map((item) =>
+              item.type === "corn" ? (
+                <div key={item.id} className="interline wrapper-item-corn">
+                  <p className="title-type-menu">{item.title}</p>
+                  <p className="description">{item.description}</p>
+                  <span>${item.price}</span>
+                </div>
+              ) : null
+            )}
+          </article>
+        </div>
+        <div className="double-grid">
+          <article className="wrapper-grilled">
+            <h2 className="interline">A la plancha</h2>
+            {data.map((item) =>
+              item.type === "grilled" ? (
+                <div key={item.id} className="interline wrapper-item-grilled">
+                  <p className="title-type-menu">{item.title}</p>
+                  <p className="description">{item.description}</p>
+                  <span>${item.price}</span>
+                </div>
+              ) : null
+            )}
+          </article>
+          <article className="wrapper-bbq">
+            <h2 className="interline">Barbacoa</h2>
+            {data.map((item) =>
+              item.type === "bbq" ? (
+                <div key={item.id} className="interline wrapper-item-bbq">
+                  <p className="title-type-menu">{item.title}</p>
+                  <p className="description">{item.description}</p>
+                  <span>${item.price}</span>
+                </div>
+              ) : null
+            )}
+          </article>
+        </div>
       </section>
     </>
   );
