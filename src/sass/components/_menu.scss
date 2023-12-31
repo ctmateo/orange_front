@@ -88,3 +88,10 @@ span{
   display: flex;
   flex-direction: column-reverse;
 }
+
+@media screen and (orientation: portrait) {
+  .double-grid {
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+  }
+}
