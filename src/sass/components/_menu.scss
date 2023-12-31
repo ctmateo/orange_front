@@ -94,4 +94,16 @@ span{
     display: grid;
     grid-template-columns: repeat(1,1fr);
   }
+
+  .wrapper-columns{
+    display: none;
+  }
+
+  .card-publi{
+    height: 250px;
+    margin-bottom: 20px;
+  }
+  .card-publi-combo{
+    height: 500px;
+  }
 }
