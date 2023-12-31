@@ -1,29 +1,77 @@
 @import '../base/reset.scss';
+@import '../abstracts/variables/variables';
 
 h2{
-  font-family: 'Avocado';
-  font-size: 48px;
+  font-family: 'Bold';
+  font-size: 52px;
 }
 span{
-  font-family: 'Bold';
-  font-size: 24px;
+  font-family: 'Semibold';
+  font-size: 28px;
 }
 
 .interline{
-  margin: 20px;
+  margin: 20px 20px 20px 0;
 }
 
-.wrapper-horn{
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-}
 
 .title-type-menu{
-  text-transform: uppercase;
   font-family: 'Semibold';
-  font-size: 24px;
+  font-size: 32px;
 }
 .description{
   font-family: 'Medium';
-  font-size: 24px;
+  font-size: 28px;
+}
+
+.wrapper-horn{
+  padding: 80px;
+}
+
+.wrapper-columns {
+  display: flex;
+}
+
+.wrapper-classic-pizza{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.column-1,.column-2{
+  margin-right: 50px;
+
+}
+.wrapper-item-special-pizza{
+  width: 550px;
+}
+.wrapper-special-pizza{
+  width: 100%;
+}
+
+.grid-template-three {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card-publi,
+.card-publi-combo {
+  cursor: pointer;
+  background-color: $primarycolor;
+  width: 100%;
+  &:hover{
+    background-color: #361410;
+  }
+}
+.card-publi{
+  height: 30%;
+  margin-bottom: 20px;
+}
+.card-publi-combo{
+  height: 67.6%;
+}
+
+.wrapper-lasagna {
+  height: 100%;
 }
