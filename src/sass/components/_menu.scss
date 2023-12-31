@@ -71,3 +71,10 @@ span{
 .wrapper-lasagna {
   height: 100%;
 }
+.wrapper-item-burguer{
+  order: -1;
+}
+
+.wrapper-burguer, .wrapper-saupotato, .wrapper-corn, .wrapper-grilled, .wrapper-hotdog, .wrapper-bbq{
+  padding: 70px;
+}
