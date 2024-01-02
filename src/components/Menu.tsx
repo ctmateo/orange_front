@@ -66,7 +66,7 @@ const Menu = () => {
         <h1 className="title-menu">Menu</h1>
         <div className="wrapper-types-pizza">
           <div className="wrapper-tp-pizza">
-            
+
           </div>
         </div>
         <article className="wrapper-horn">
@@ -127,7 +127,7 @@ const Menu = () => {
             </article>
           </div>
         </div>
-        <div className="wrapper-lasagna">
+        
         <div className="double-grid">
           <article className="wrapper-saupotato">
             <h2 className="interline">Salchipapas tradicional</h2>
@@ -154,7 +154,7 @@ const Menu = () => {
             )}
           </article>
         </div>
-        </div>
+        
         <div className="double-grid">
           <article className="wrapper-grilled">
             <h2 className="interline">A la plancha</h2>
