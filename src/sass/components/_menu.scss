@@ -117,15 +117,6 @@ span{
 }
 
 @media screen and (orientation: portrait) {
-  .double-grid {
-    display: grid;
-    grid-template-columns: repeat(1,1fr);
-  }
-
-  .wrapper-columns{
-    display: none;
-  }
-
   .card-publi{
     height: 250px;
     margin-bottom: 20px;
