@@ -9,6 +9,11 @@ span{
   font-family: 'Semibold';
   font-size: 28px;
 }
+.title-menu{
+  margin-left: 70px;
+  font-size: 100px;
+  font-family: 'Bold';
+}
 
 .interline{
   margin: 20px 20px 20px 0;
@@ -22,6 +27,10 @@ span{
 .description{
   font-family: 'Medium';
   font-size: 28px;
+}
+
+.options-buy{
+  margin-top: 10px;
 }
 
 
@@ -58,8 +67,17 @@ span{
   gap: 70px;
 }
 
+.card-combo-hotdog{
+  width: 100%;
+  height: 50%;
+  background-color: #361410;
+  border-radius:10px;
+  margin-bottom: 30px;
+}
+
 .card-publi,
 .card-publi-combo {
+  border-radius: 10px;
   cursor: pointer;
   background-color: $primarycolor;
   width: 100%;
@@ -69,20 +87,23 @@ span{
 }
 .card-publi{
   height: 30%;
-  margin-bottom: 20px;
+
 }
 .card-publi-combo{
   height: 67.6%;
+  margin-bottom: 20px;
 }
 
 .wrapper-lasagna {
-  padding: 70px;
+  margin: 70px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 30px;
   height: 100%;
 }
 .wrapper-item-burguer{
   order: -1;
 }
-
 
 .wrapper-burguer{
   display: flex;

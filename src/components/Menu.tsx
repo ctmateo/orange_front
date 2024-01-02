@@ -50,8 +50,7 @@ const Menu = () => {
                 <section key={item.id} className="interline">
                   <p className="title-type-menu">{item.title}</p>
                   <p className="description">{item.description}</p>
-                  
-                  <span>{item.type === 'lasagna' ? item.price : null}</span>
+                  {item.type === "lasagna" ? <span>${item.price}</span> : null}
                 </section>
               ))}
           </div>
@@ -62,9 +61,9 @@ const Menu = () => {
 
   return (
     <>
-      <Link to="/">volver</Link>
       <section className="container-menu">
-        <h1>Menu</h1>
+        <Link to="/">volver</Link>
+        <h1 className="title-menu">Menu</h1>
         <article className="wrapper-horn">
           {/* //Pizza */}
           <div className="wrapper-pizza">
@@ -80,15 +79,15 @@ const Menu = () => {
                 </div>
               </div>
               <div className="column-grid">
-                <div className="card-publi"></div>
                 <div className="card-publi-combo"></div>
+                <div className="card-publi"></div>
               </div>
             </div>
           </div>
         </article>
         <div className="wrapper-lasagna">
           <h2>Lasagna</h2>
-          {renderizarElementosPizza('lasagna',3)}
+          {renderizarElementosPizza("lasagna", 3)}
         </div>
 
         {/* //Hamburguesas*/}
@@ -100,23 +99,28 @@ const Menu = () => {
                 <div key={item.id} className="interline wrapper-item-burguer">
                   <p className="title-type-menu">{item.title}</p>
                   <p className="description">{item.description}</p>
-                  <span className="price">${item.price}</span>
+                  <div className="options-buy">
+                    <span>${item.price}</span>
+                  </div>
                 </div>
               ) : null
             )}
           </article>
-          <article className="wrapper-hotdog">
-            <h2 className="interline">Hot Dog</h2>
-            {data.map((item) =>
-              item.type === "hotdog" ? (
-                <div key={item.id} className="interline wrapper-item-hotdog">
-                  <p className="title-type-menu">{item.title}</p>
-                  <p className="description">{item.description}</p>
-                  <span>${item.price}</span>
-                </div>
-              ) : null
-            )}
-          </article>
+          <div className="column-grid">
+            <div className="card-combo-hotdog"></div>
+            <article className="wrapper-hotdog">
+              <h2 className="interline">Hot Dog</h2>
+              {data.map((item) =>
+                item.type === "hotdog" ? (
+                  <div key={item.id} className="interline wrapper-item-hotdog">
+                    <p className="title-type-menu">{item.title}</p>
+                    <p className="description">{item.description}</p>
+                    <span>${item.price}</span>
+                  </div>
+                ) : null
+              )}
+            </article>
+          </div>
         </div>
         <div className="double-grid">
           <article className="wrapper-saupotato">
