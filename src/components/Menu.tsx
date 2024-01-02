@@ -122,6 +122,7 @@ const Menu = () => {
             </article>
           </div>
         </div>
+        <div className="wrapper-lasagna">
         <div className="double-grid">
           <article className="wrapper-saupotato">
             <h2 className="interline">Salchipapas tradicional</h2>
@@ -147,6 +148,7 @@ const Menu = () => {
               ) : null
             )}
           </article>
+        </div>
         </div>
         <div className="double-grid">
           <article className="wrapper-grilled">

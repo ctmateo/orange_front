@@ -7,7 +7,7 @@ h2{
 }
 span{
   font-family: 'Semibold';
-  font-size: 28px;
+  font-size: 30px;
 }
 .title-menu{
   margin-left: 70px;
@@ -17,12 +17,17 @@ span{
 
 .interline{
   margin: 20px 20px 20px 0;
+  cursor: pointer;
+  &:hover{
+    color: #361410;
+  }
 }
 
 
 .title-type-menu{
   font-family: 'Semibold';
-  font-size: 32px;
+  font-size: 34px;
+  margin-bottom: 5px;
 }
 .description{
   font-family: 'Medium';
