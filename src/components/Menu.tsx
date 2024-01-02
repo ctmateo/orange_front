@@ -64,6 +64,11 @@ const Menu = () => {
       <section className="container-menu">
         <Link to="/">volver</Link>
         <h1 className="title-menu">Menu</h1>
+        <div className="wrapper-types-pizza">
+          <div className="wrapper-tp-pizza">
+            
+          </div>
+        </div>
         <article className="wrapper-horn">
           {/* //Pizza */}
           <div className="wrapper-pizza">
