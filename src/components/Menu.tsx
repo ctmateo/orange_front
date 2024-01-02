@@ -65,9 +65,7 @@ const Menu = () => {
         <Link to="/">volver</Link>
         <h1 className="title-menu">Menu</h1>
         <div className="wrapper-types-pizza">
-          <div className="wrapper-tp-pizza">
-
-          </div>
+          <div className="wrapper-tp-pizza"></div>
         </div>
         <article className="wrapper-horn">
           {/* //Pizza */}
@@ -111,23 +109,24 @@ const Menu = () => {
               ) : null
             )}
           </article>
-          <div className="column-grid">
-            <div className="card-combo-hotdog"></div>
-            <article className="wrapper-hotdog">
-              <h2 className="interline">Hot Dog</h2>
-              {data.map((item) =>
-                item.type === "hotdog" ? (
-                  <div key={item.id} className="interline wrapper-item-hotdog">
-                    <p className="title-type-menu">{item.title}</p>
-                    <p className="description">{item.description}</p>
-                    <span>${item.price}</span>
-                  </div>
-                ) : null
-              )}
-            </article>
-          </div>
+          <div className="card-combo"></div>
         </div>
-        
+        <div className="double-grid">
+        <article className="wrapper-hotdog">
+            <h2 className="interline">Hot Dog</h2>
+            {data.map((item) =>
+              item.type === "hotdog" ? (
+                <div key={item.id} className="interline wrapper-item-hotdog">
+                  <p className="title-type-menu">{item.title}</p>
+                  <p className="description">{item.description}</p>
+                  <span>${item.price}</span>
+                </div>
+              ) : null
+            )}
+          </article>
+          <div className="card-combo"></div>
+        </div>
+
         <div className="double-grid">
           <article className="wrapper-saupotato">
             <h2 className="interline">Salchipapas tradicional</h2>
@@ -154,7 +153,7 @@ const Menu = () => {
             )}
           </article>
         </div>
-        
+
         <div className="double-grid">
           <article className="wrapper-grilled">
             <h2 className="interline">A la plancha</h2>
