@@ -70,7 +70,7 @@ const Menu = () => {
     <>
       <section className="container-menu">
         <div className="shopping-cart">
-          
+
         </div>
         <div className="title-menu">
           <Link to="/">volver</Link>
@@ -101,9 +101,9 @@ const Menu = () => {
                   {renderElements("pizzaE", 1)}
                 </div>
               </div>
-              <div className="column-grid">
-                <div className="card-publi-combo"></div>
-                <div className="card-publi"></div>
+              <div className="card-combo">
+                <div className="combo-1"></div>
+                <div className="combo-2"></div>
               </div>
             </div>
           </div>
