@@ -1,58 +1,72 @@
-@import '../base/reset.scss';
-@import '../abstracts/variables/variables';
+@import "../base/reset.scss";
+@import "../abstracts/variables/variables";
 
-h2{
+h2 {
   text-transform: uppercase;
-  font-family: 'Rush';
+  font-family: "Rush";
   font-size: 68px;
 }
-span{
-  font-family: 'Semibold';
+span {
+  font-family: "Semibold";
   font-size: 30px;
 }
-.title-menu{
+
+.container-menu {
+  position: relative;
+  background-color: #ffff;
+  color: #400601;
+}
+.title-menu {
   margin-left: 70px;
   font-size: 100px;
-  font-family: 'Bold';
+  font-family: "Bold";
 }
 
-.interline{
-  margin: 20px 20px 20px 0;
+.interline {
+  margin: 20px 20px 40px 0;
   cursor: pointer;
-  &:hover{
-    color: #361410;
-  }
 }
 
-.subtitle{
+.subtitle {
   display: flex;
   flex-direction: column;
-  span{
+  span {
     display: flex;
     flex-direction: column;
     line-height: 0;
-
+    font-family: "Bold";
   }
 }
 
-.title-type-menu{
-  font-family: 'Semibold';
-  font-size: 34px;
+.title-type-menu {
+  font-family: "Bold";
+  font-size: 38px;
   margin-bottom: 5px;
+  color: #cd2826;
 }
-.description{
-  font-family: 'Medium';
-  font-size: 28px;
+.description {
+  font-family: "Semibold";
+  font-size: 32px;
 }
 
-.options-buy{
+.options-buy {
   margin-top: 10px;
 }
 
-.wrapper-horn{
-  padding-bottom: 80px;
-  background-color: $primarycolor;
-  color: $background;
+.wrapper-horn {
+  padding-bottom: 150px;
+}
+
+.wrapper-kitchen {
+  padding: 150px 0 150px 0;
+}
+
+.wrapper-green {
+  padding: 0 0 150px 0;
+  .border {
+    border-radius: 28px;
+    margin: 0 70px 0 70px;
+  }
 }
 
 .wrapper-columns {
@@ -60,56 +74,50 @@ span{
   justify-content: space-between;
 }
 
-.wrapper-classic-pizza{
+.wrapper-classic-pizza {
   padding: 70px 70px 0 70px;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-.column-2{
-  margin: 0 70px 0 70px
-}
 
-
-.double-grid{
+.double-grid {
   padding: 70px;
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 70px;
 }
 
-.card-combo{
+.card-combo {
   width: 100%;
   height: 100%;
-  border:1px solid #361410;
-  border-radius:10px;
+  background-color: #400601;
+  border-radius: 28px;
   margin-bottom: 30px;
 }
 
 .card-publi,
 .card-publi-combo {
-  border-radius: 10px;
+  border-radius: 28px;
   cursor: pointer;
-  border:1px solid $background;
   width: 100%;
-  &:hover{
-    border:1px solid $background;
-  }
 }
-.card-publi{
+.card-publi {
   height: 30%;
-
+  background-color: #400601;
 }
-.card-publi-combo{
+.card-publi-combo {
   height: 67.6%;
   margin-bottom: 20px;
+  background-color: #400601;
 }
 
-.wrapper-types-pizza{
-  padding:  70px 70px 0 70px;
-  .wrapper-tp-pizza{
-    border-radius: 10px;
-    border: 1px solid $background;
+.wrapper-types-pizza {
+  padding: 70px 70px 0 70px;
+  .wrapper-tp-pizza {
+    cursor: pointer;
+    border-radius: 28px;
+    background-color: #540a05;
     width: 100%;
     height: 500px;
   }
@@ -117,50 +125,82 @@ span{
 
 .wrapper-lasagna {
   padding: 40px;
+  border-radius: 28px;
+  margin: 0 70px 0 70px;
+  background-color: hsl(5, 97%, 13%);
+  color: #efeccb;
+  h2{
+    margin-bottom: 18px;
+  }
+  .interline{
+    margin: 0;
+  }
 }
-.wrapper-item-burguer{
+.wrapper-item-burguer {
   order: -1;
 }
 
-.wrapper-burguer{
+.wrapper-burguer {
   display: flex;
   flex-direction: column-reverse;
 }
 
-.wrapper-grilled, .wrapper-bbq{
+.wrapper-grilled,
+.wrapper-bbq {
   padding: 30px;
 }
 
-.border{
+.border {
   border: 1px solid #361410;
-  margin: 70px;
-  border-radius: 10px;
+  border-radius: 28px;
+  margin: 0 70px 0 70px;
 }
 
-.border-less-padding{
-  border: 1px solid #361410;
-  border-radius: 10px;
+.border-less-padding {
+  padding: 40px;
+  background-color: #400601;
+  color: #efeccb;
+  border-radius: 28px;
 }
 
-.drinks{
-  padding: 70px;
+.drinks {
+  padding: 0 70px 0 70px;
   height: 100%;
   width: 100%;
-  background-color: $primarycolor;
-  color: $background;
 }
-.wrapper-milkshake{
-  padding-top: 80px;
-  color: $background;
+.wrapper-milkshake {
   display: flex;
   flex-direction: column;
 }
+
+.items-buy {
+  height: 48px;
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+
+  span {
+    margin: 0 10px 0 0;
+    font-size: 34px;
+  }
+  button {
+    margin-right: 8px;
+    height: 48px;
+    width: 48px;
+    border: none;
+    background-color: transparent;
+    border: 1px solid #cd2826;
+    border-radius: 5px;
+    color: #cd2826;
+  }
+}
+
 @media screen and (orientation: portrait) {
-  .card-publi{
+  .card-publi {
     height: 250px;
     margin-bottom: 20px;
   }
-  .card-publi-combo{
+  .card-publi-combo {
     height: 500px;
   }
 }

@@ -33,9 +33,7 @@ const Menu = () => {
       .filter((item) => item.type === tipo)
       .slice(0, cantidadColumnas === 2 ? 6 : 7);
 
-    const elementosPorColumna = Math.ceil(
-      elements.length / cantidadColumnas
-    );
+    const elementosPorColumna = Math.ceil(elements.length / cantidadColumnas);
 
     return (
       <div className="wrapper-columns">
@@ -47,11 +45,21 @@ const Menu = () => {
                 (columnIndex + 1) * elementosPorColumna
               )
               .map((item) => (
-                <section key={item.id} className="interline">
+                <article key={item.id} className="interline">
                   <p className="title-type-menu">{item.title}</p>
                   <p className="description">{item.description}</p>
-                  {item.type === "pizzaC" || item.type === "pizzaE" ? null : <span>${item.price}</span>}
-                </section>
+                  {item.type === "pizzaC" || item.type === "pizzaE" ? null : (
+                    <div className="items-buy">
+                      <div className="container-price">
+                        <span>${item.price}</span>
+                      </div>
+                      <div className="btn-order">
+                        <button></button>
+                        <button></button>
+                      </div>
+                    </div>
+                  )}
+                </article>
               ))}
           </div>
         ))}
@@ -62,8 +70,10 @@ const Menu = () => {
   return (
     <>
       <section className="container-menu">
-        <Link to="/">volver</Link>
-        <h1 className="title-menu">Menu</h1>
+        <div className="title-menu">
+          <Link to="/">volver</Link>
+          <h1>Menu digital</h1>
+        </div>
         {/* //Pizza */}
         <article className="wrapper-horn">
           <div className="wrapper-types-pizza">
@@ -97,77 +107,93 @@ const Menu = () => {
           </div>
         </article>
         {/* //Lasagna */}
-        <div className="border">
-          <div className="wrapper-lasagna">
-            <div className="subtitle">
-              <h2>
-                <span>Rellenita</span>Lasagna
-              </h2>
-            </div>
-            {renderElements("lasagna", 3)}
+        <div className="wrapper-lasagna">
+          <div className="subtitle">
+            <h2>
+              <span>Rellenita</span>Lasagna
+            </h2>
           </div>
+          {renderElements("lasagna", 3)}
         </div>
 
         {/* //Hamburguesas*/}
-        <div className="double-grid">
-          <article className="wrapper-burguer">
-            <div className="subtitle">
-              <h2>
-                <span>Artesanal</span>Hamburguesa
-              </h2>
-            </div>
-            <div className="wrapper-item-burguer">
-              {renderElements("burguer", 1)}
-            </div>
-          </article>
-          <div className="card-combo"></div>
-        </div>
-        <div className="double-grid">
-          <article className="wrapper-hotdog">
-            <div className="subtitle">
-              <h2>
-                <span>Esponjoso</span>Hot dog
-              </h2>
-            </div>
-            <div className="wrapper-item-hotdog">
-              {renderElements("hotdog", 1)}
-            </div>
-          </article>
-          <div className="card-combo"></div>
-        </div>
-
-        <div className="border">
+        <div className="wrapper-kitchen">
+          <div className="space"></div>
           <div className="double-grid">
-            <article className="wrapper-saupotato">
-              <h2 className="interline">Salchipapa</h2>
-              <div className="wrapper-item-saupotato"></div>
-              {renderElements("saupotato", 1)}
-            </article>
-            <article className="wrapper-corn">
-              <h2 className="interline">Mazorcada</h2>
-              <div className="wrapper-item-corn">
-                {renderElements("corn", 1)}
+            <article className="wrapper-burguer">
+              <div className="subtitle">
+                <h2>
+                  <span>Artesanal</span>Hamburguesas
+                </h2>
+              </div>
+              <div className="wrapper-item-burguer">
+                {renderElements("burguer", 1)}
               </div>
             </article>
+            <div className="card-combo"></div>
+          </div>
+          <div className="double-grid">
+            <article className="wrapper-hotdog">
+              <div className="subtitle">
+                <h2>
+                  <span>Esponjoso</span>Hot dog
+                </h2>
+              </div>
+              <div className="wrapper-item-hotdog">
+                {renderElements("hotdog", 1)}
+              </div>
+            </article>
+            <div className="card-combo"></div>
           </div>
         </div>
 
-        <div className="double-grid">
-          <div className="border-less-padding">
-            <article className="wrapper-grilled">
-              <h2 className="interline">A la plancha</h2>
-              <div className="wrapper-item-grilled">
-                {renderElements("grilled", 1)}
-              </div>
-            </article>
+        <div className="wrapper-green">
+          <div className="border">
+            <div className="double-grid">
+              <article className="wrapper-saupotato">
+                <div className="subtitle">
+                  <h2>
+                    <span>Tradicional</span>Salchipapa
+                  </h2>
+                </div>
+                {renderElements("saupotato", 1)}
+              </article>
+              <article className="wrapper-corn">
+                <div className="subtitle">
+                  <h2>
+                    <span>Tradicional</span>Mazorcada
+                  </h2>
+                </div>
+                {renderElements("corn", 1)}
+              </article>
+            </div>
           </div>
-          <div className="border-less-padding">
-            <article className="wrapper-bbq">
-              <h2 className="interline">BBQ</h2>
-              <div className="wrapper-item-bbq">
-                {renderElements("bbq", 1)}
-              </div>
-            </article>
+
+          <div className="double-grid">
+            <div className="border-less-padding">
+              <article className="wrapper-grilled">
+                <div className="subtitle">
+                  <h2>
+                    <span>Con ensalada</span>A la plancha
+                  </h2>
+                </div>
+                <div className="wrapper-item-grilled">
+                  {renderElements("grilled", 1)}
+                </div>
+              </article>
+            </div>
+            <div className="border-less-padding">
+              <article className="wrapper-bbq">
+                <div className="subtitle">
+                  <h2>
+                    <span>Salsa BBQ</span>Especial BBQ
+                  </h2>
+                </div>
+                <div className="wrapper-item-bbq">
+                  {renderElements("bbq", 1)}
+                </div>
+              </article>
+            </div>
           </div>
         </div>
         <div className="drinks">
@@ -180,32 +206,30 @@ const Menu = () => {
           <div className="wrapper-latte">
             <h2>Latte</h2>
             <div className="wrapper-item-latte">
-              {renderElements("latte",1)}
+              {renderElements("latte", 1)}
             </div>
           </div>
           <div className="wrapper-lemonade">
             <h2>Limonadas</h2>
             <div className="wrapper-item-lemonade">
-              {renderElements("lemonade",1)}
+              {renderElements("lemonade", 1)}
             </div>
           </div>
           <div className="wrapper-juice">
             <h2>Jugos Naturales</h2>
             <div className="wrapper-item-juice">
-              {renderElements("juice",1)}
+              {renderElements("juice", 1)}
             </div>
           </div>
           <div className="wrapper-drinks">
             <h2>Bebidas</h2>
             <div className="wrapper-item-drinks">
-              {renderElements("drinks",1)}
+              {renderElements("drinks", 1)}
             </div>
           </div>
           <div className="wrapper-beef">
             <h2>Cerveza</h2>
-            <div className="wrapper-item-beef">
-              {renderElements("beef",1)}
-            </div>
+            <div className="wrapper-item-beef">{renderElements("beef", 1)}</div>
           </div>
         </div>
       </section>
