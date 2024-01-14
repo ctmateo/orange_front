@@ -28,21 +28,21 @@ const Menu = () => {
     getItem();
   }, []);
 
-  const renderElements = (tipo: string, cantidadColumnas: number) => {
+  const renderElements = (type: string, quantityColumns: number) => {
     const elements = data
-      .filter((item) => item.type === tipo)
-      .slice(0, cantidadColumnas === 2 ? 6 : 7);
+      .filter((item) => item.type === type)
+      .slice(0, quantityColumns === 2 ? 6 : 7);
 
-    const elementosPorColumna = Math.ceil(elements.length / cantidadColumnas);
+    const elementsForColumn = Math.ceil(elements.length / quantityColumns);
 
     return (
       <div className="wrapper-columns">
-        {Array.from({ length: cantidadColumnas }).map((_, columnIndex) => (
+        {Array.from({ length: quantityColumns }).map((_, columnIndex) => (
           <div key={columnIndex} className={`column-${columnIndex + 1}`}>
             {elements
               .slice(
-                columnIndex * elementosPorColumna,
-                (columnIndex + 1) * elementosPorColumna
+                columnIndex * elementsForColumn,
+                (columnIndex + 1) * elementsForColumn
               )
               .map((item) => (
                 <article key={item.id} className="interline">
@@ -53,9 +53,8 @@ const Menu = () => {
                       <div className="container-price">
                         <span>${item.price}</span>
                       </div>
-                      <div className="btn-order">
-                        <button></button>
-                        <button></button>
+                      <div className="buttons">
+                        <button className="buy-btn">Añadir al carrito</button>
                       </div>
                     </div>
                   )}
@@ -70,6 +69,9 @@ const Menu = () => {
   return (
     <>
       <section className="container-menu">
+        <div className="shopping-cart">
+          
+        </div>
         <div className="title-menu">
           <Link to="/">volver</Link>
           <h1>Menu digital</h1>
@@ -199,9 +201,7 @@ const Menu = () => {
         <div className="drinks">
           <div className="wrapper-milkshake">
             <h2>Malteadas</h2>
-            <div className="wrapper-item-bbq">
-              {renderElements("milkshake", 1)}
-            </div>
+            <div className="grid">{renderElements("milkshake", 1)}</div>
           </div>
           <div className="wrapper-latte">
             <h2>Latte</h2>

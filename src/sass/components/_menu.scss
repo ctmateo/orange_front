@@ -11,6 +11,17 @@ span {
   font-size: 30px;
 }
 
+.shopping-cart{
+  position: fixed;
+  bottom: 0;
+  right: 0; 
+  margin: 0 40px 40px 0;
+  height: 104px;
+  width: 104px;
+  border-radius: 10px;
+  background-color: blue;
+}
+
 .container-menu {
   position: relative;
   background-color: #ffff;
@@ -25,6 +36,13 @@ span {
 .interline {
   margin: 20px 20px 40px 0;
   cursor: pointer;
+  transition: all 200ms;
+  &:hover{
+    .buttons{
+      opacity: 1;
+    }
+  }
+
 }
 
 .subtitle {
@@ -43,6 +61,7 @@ span {
   font-size: 38px;
   margin-bottom: 5px;
   color: #cd2826;
+  flex-wrap: wrap;
 }
 .description {
   font-family: "Semibold";
@@ -129,10 +148,10 @@ span {
   margin: 0 70px 0 70px;
   background-color: hsl(5, 97%, 13%);
   color: #efeccb;
-  h2{
+  h2 {
     margin-bottom: 18px;
   }
-  .interline{
+  .interline {
     margin: 0;
   }
 }
@@ -167,6 +186,14 @@ span {
   padding: 0 70px 0 70px;
   height: 100%;
   width: 100%;
+  .column-1 {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    width: 100%;
+  }
+  // .interline{
+  //   background-color: blue;
+  // }
 }
 .wrapper-milkshake {
   display: flex;
@@ -174,7 +201,7 @@ span {
 }
 
 .items-buy {
-  height: 48px;
+  height: 54px;
   margin-top: 18px;
   display: flex;
   align-items: center;
@@ -183,15 +210,24 @@ span {
     margin: 0 10px 0 0;
     font-size: 34px;
   }
-  button {
+  .buttons {
+    display: flex;
+    height: 54px;
+    width: 100%;
+    opacity: 0.1;
+  }
+
+  .buy-btn {
+    cursor: pointer;
+    padding: 10px;
+    font-size: 28px;
+    font-family: "Medium";
     margin-right: 8px;
-    height: 48px;
-    width: 48px;
+    height: 54px;
     border: none;
-    background-color: transparent;
-    border: 1px solid #cd2826;
+    background-color: #361410;
     border-radius: 5px;
-    color: #cd2826;
+    color: #efeccb;
   }
 }
 
