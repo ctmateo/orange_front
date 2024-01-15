@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../sass/components/_menu.scss";
 import axios from "axios";
+import Navbar from "./Navbar";
 
 interface Items {
   id: number;
@@ -10,10 +11,17 @@ interface Items {
   title: string;
   description: string;
   price: number;
+  quantity: number;
+}
+interface QuantitySelectorProps {
+  initialQuantity: number;
+  onQuantityChange: (newQuantity: number) => void;
 }
 
 const Menu = () => {
   const [data, setData] = useState<Items[]>([]);
+  const [shoppingCart, setShoppingCart] = useState<Items[]>([]);
+
   useEffect(() => {
     const getItem = async () => {
       try {
@@ -27,6 +35,100 @@ const Menu = () => {
     };
     getItem();
   }, []);
+
+  const DeleteItemShoppingCar = (item: Items) => {
+    setShoppingCart((prevCart) => {
+      const updatedCart = prevCart.filter((cartItem) => cartItem.id !== item.id);
+      console.log("Carrito actualizado:", updatedCart);
+      return updatedCart;
+    });
+  };
+  const AddItemShoppingCar = (item: Items) => {
+    setShoppingCart((prevCart) => {
+      const statusCartShopping = [...prevCart, { ...item, quantity: 1 }];
+      console.log("Carrito actualizado:", statusCartShopping);
+      return statusCartShopping;
+    });
+  };
+
+  const QuantitySelector: React.FC<QuantitySelectorProps> = ({
+    initialQuantity,
+    onQuantityChange,
+  }) => {
+    const [quantity, setQuantity] = useState(initialQuantity);
+
+    const decreaseQuantity = () => {
+      if (quantity > 1) {
+        setQuantity((prevQuantity) => {
+          const newQuantity = prevQuantity - 1;
+          onQuantityChange(newQuantity);
+          return newQuantity;
+        });
+      }
+    };
+
+    const increaseQuantity = () => {
+      setQuantity((prevQuantity) => {
+        const newQuantity = prevQuantity + 1;
+        onQuantityChange(newQuantity);
+        return newQuantity;
+      });
+    };
+
+    return (
+      <div className="quantity">
+        <button onClick={decreaseQuantity}>-</button>
+        <p>{quantity}</p>
+        <button onClick={increaseQuantity}>+</button>
+      </div>
+    );
+  };
+
+  const shoppingCartWindow = () => {
+    const handleQuantityChange = (newQuantity: number, itemId: number) => {
+      setShoppingCart((prevCart) =>
+        prevCart.map((item) =>
+          item.id === itemId ? { ...item, quantity: newQuantity } : item
+        )
+      );
+    };
+    const totalAmount = shoppingCart.reduce(
+      (total, item) => total + Number(item.price) * item.quantity,
+      0
+    );
+    const formattedTotal = totalAmount.toFixed(3);
+
+    return (
+      <div className="window-shop">
+        <h2>Tu pedido</h2>
+        <div className="items-ofshop">
+          {shoppingCart.map((item) => (
+            <div key={item.id} className="inshop">
+              <button onClick={() => DeleteItemShoppingCar(item)}>Eliminar</button>
+              <div className="info-item">
+                <p>{item.type}</p>
+                <p>{item.title}</p>
+              </div>
+              <QuantitySelector
+                initialQuantity={item.quantity}
+                onQuantityChange={(newQuantity) =>
+                  handleQuantityChange(newQuantity, item.id)
+                }
+              />
+            </div>
+          ))}
+        </div>
+        <div className="total-pay">
+          <p>Total a pagar</p>
+          <p>${formattedTotal}</p>
+        </div>
+        <div className="btns">
+          <button>Mandar a Whatsapp</button>
+          <button>Ordenar ahora</button>
+        </div>
+      </div>
+    );
+  };
 
   const renderElements = (type: string, quantityColumns: number) => {
     const elements = data
@@ -54,7 +156,12 @@ const Menu = () => {
                         <span>${item.price}</span>
                       </div>
                       <div className="buttons">
-                        <button className="buy-btn">Añadir al carrito</button>
+                        <button
+                          onClick={() => AddItemShoppingCar(item)}
+                          className="buy-btn"
+                        >
+                          Añadir al carrito
+                        </button>
                       </div>
                     </div>
                   )}
@@ -69,8 +176,11 @@ const Menu = () => {
   return (
     <>
       <section className="container-menu">
-        <div className="shopping-cart">
-
+        <div className="navegation">
+          {shoppingCartWindow()}
+          <div className="shopping-cart">
+            <img src="icons/car.svg" alt="car" />
+          </div>
         </div>
         <div className="title-menu">
           <Link to="/">volver</Link>

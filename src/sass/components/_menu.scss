@@ -11,20 +11,116 @@ span {
   font-size: 30px;
 }
 
-.shopping-cart{
+.navegation {
   position: fixed;
   bottom: 0;
-  right: 0; 
+  right: 0;
   margin: 0 40px 40px 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
+.items-ofshop {
+  scrollbar-width: thin; /* Ancho de la barra de scroll en Firefox */
+  scrollbar-color: yellow #555; /* Color del indicador y fondo en Firefox */
+
+  /* Estilos del indicador de la barra de scroll para navegadores webkit */
+  &::-webkit-scrollbar {
+    width: 12px; /* Ancho de la barra de scroll en webkit */
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: yellowgreen; /* Color de fondo en webkit */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: blue; /* Color del indicador en webkit */
+    border-radius: 5px; /* Bordes redondeados en webkit */
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
+}
+
+
+.window-shop {
+  position: relative;
+  padding: 30px;
+  border-radius: 28px;
+  background-color: #540a05;
+  color: #efeccb;
+  margin-bottom: 24px;
+  object-fit: contain;
+  p {
+    font-family: "Semibold";
+    font-size: 30px;
+  }
+  .items-ofshop {
+    padding: 20px;
+    height: 500px;
+    width: 600px;
+    margin-top: 18px;
+    overflow: auto;
+  }
+  .inshop {
+    padding: 10px;
+    margin-bottom: 24px;
+    background-color: #e8dfd7;
+    color: #361410;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .quantity {
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      button {
+        height: 34px;
+        width: 34px;
+      }
+    }
+  }
+  .total-pay{
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0 60px 0;
+  }
+  .btns{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+
+    button{
+      border: none;
+      padding: 22px;
+      width: 100%;
+    }
+  }
+}
+.shopping-cart {
   height: 104px;
   width: 104px;
   border-radius: 10px;
-  background-color: blue;
+  background-color: #ababab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    width: 80%;
+    color: #e8dfd7;
+  }
 }
 
 .container-menu {
   position: relative;
-  background-color: #E8DFD7;
+  background-color: #e8dfd7;
   color: #400601;
 }
 .title-menu {
@@ -37,12 +133,11 @@ span {
   margin: 20px 20px 40px 0;
   cursor: pointer;
   transition: all 200ms;
-  &:hover{
-    .buttons{
+  &:hover {
+    .buttons {
       opacity: 1;
     }
   }
-
 }
 
 .subtitle {
@@ -60,7 +155,7 @@ span {
   font-family: "Bold";
   font-size: 38px;
   margin-bottom: 5px;
-  color: #CE3B27;
+  color: #ce3b27;
   flex-wrap: wrap;
 }
 .description {
@@ -72,7 +167,7 @@ span {
   margin-top: 10px;
 }
 
-.column-grid{
+.column-grid {
   background-color: blue;
 }
 .wrapper-horn {
@@ -111,23 +206,12 @@ span {
 }
 
 .card-combo {
+  position: relative;
   width: 100%;
   height: 100%;
   background-color: #400601;
   border-radius: 28px;
-  .combo-1 {
-    height: 70%;
-    background-color: red;
-    border-radius: 28px;
-    margin-bottom: 18px;
-  }
-  .combo-2 {
-    height: 30%;
-    background-color: blue;
-    border-radius: 28px;
-  }
 }
-
 
 .wrapper-types-pizza {
   padding: 70px 70px 0 70px;
@@ -139,7 +223,24 @@ span {
     height: 500px;
   }
 }
-
+.wrapper-pizza {
+  .card-combo {
+    background-color: transparent;
+    .combo-1 {
+      height: 60%;
+      background-color: #540a05;
+      border-radius: 28px;
+    }
+    .combo-2 {
+      height: 35%;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      background-color: #540a05;
+      border-radius: 28px;
+    }
+  }
+}
 .wrapper-lasagna {
   padding: 40px;
   border-radius: 28px;
@@ -181,11 +282,15 @@ span {
 }
 
 .drinks {
-  padding: 0 70px 0 70px;
   height: 100%;
   width: 100%;
+  h2 {
+    padding-left: 70px;
+  }
   .column-1 {
+    padding: 0 70px 0 70px;
     display: grid;
+    justify-content: space-between;
     grid-template-columns: repeat(3, auto);
     width: 100%;
   }
