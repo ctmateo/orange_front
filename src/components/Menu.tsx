@@ -50,46 +50,46 @@ const Menu = () => {
     };
   }, [statusBtnShopping]);
 
-  const translateTypeId = (item: string) =>{
-    switch(item){
-      case 'lasagna':
-        return 'Lasagna'
-      case 'burguer':
-        return 'Hamburguesa'
-      case 'saupotato':
-        return 'Salchipapa'
-      case 'corn':
-        return 'Mazorcada'
-      case 'milkshake':
-        return 'Malteada'
-      case 'grilled':
-        return 'Carnes'
-      case 'latte':
-        return 'Latte'
-      case 'juice':
-        return 'Jugo'
-      case 'drinks':
-        return 'Bebidas'
-      case 'beef':
-        return 'Cerveza'
-      case 'lemonade':
-        return 'Limonada'
-      case 'hotdog':
-        return 'Hot Dog'
-      case 'bbq':
-        return 'BBQ'
-    } 
-  }
-
-  const DeleteItemShoppingCar = (item: Items) => {
-    setShoppingCart((prevCart) => {
-      const updatedCart = prevCart.filter(
-        (cartItem) => cartItem.id !== item.id
-      );
-      console.log("Carrito actualizado:", updatedCart);
-      return updatedCart;
-    });
+  const translateTypeId = (item: string) => {
+    switch (item) {
+      case "lasagna":
+        return "Lasagna";
+      case "burguer":
+        return "Hamburguesa";
+      case "saupotato":
+        return "Salchipapa";
+      case "corn":
+        return "Mazorcada";
+      case "milkshake":
+        return "Malteada";
+      case "grilled":
+        return "Carnes";
+      case "latte":
+        return "Latte";
+      case "juice":
+        return "Jugo";
+      case "drinks":
+        return "Bebidas";
+      case "beef":
+        return "Cerveza";
+      case "lemonade":
+        return "Limonada";
+      case "hotdog":
+        return "Hot Dog";
+      case "bbq":
+        return "BBQ";
+    }
   };
+
+  // const DeleteItemShoppingCar = (item: Items) => {
+  //   setShoppingCart((prevCart) => {
+  //     const updatedCart = prevCart.filter(
+  //       (cartItem) => cartItem.id !== item.id
+  //     );
+  //     console.log("Carrito actualizado:", updatedCart);
+  //     return updatedCart;
+  //   });
+  // };
   const AddItemShoppingCar = (item: Items) => {
     setShoppingCart((prevCart) => {
       const statusCartShopping = [...prevCart, { ...item, quantity: 1 }];
@@ -150,7 +150,7 @@ const Menu = () => {
     const formattedTotal = totalAmount.toFixed(3);
 
     return (
-      <div className={`window-shop ${statusBtnShopping ? 'active' : ''}`}>
+      <div className={`window-shop ${statusBtnShopping ? "active" : ""}`}>
         <h2>Tu carrito</h2>
         <div className="items-ofshop">
           {shoppingCart.map((item) => (
