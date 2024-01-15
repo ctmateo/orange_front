@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../sass/components/_menu.scss";
 import axios from "axios";
-import Navbar from "./Navbar";
 
 interface Items {
   id: number;
@@ -123,8 +122,8 @@ const Menu = () => {
           <p>${formattedTotal}</p>
         </div>
         <div className="btns">
-          <button>Mandar a Whatsapp</button>
-          <button>Ordenar ahora</button>
+          <button id="btn1">Mandar a Whatsapp</button>
+          <button id="btn2">Ordenar ahora</button>
         </div>
       </div>
     );

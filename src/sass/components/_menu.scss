@@ -44,15 +44,14 @@ span {
   }
 }
 
-
 .window-shop {
   position: relative;
   padding: 30px;
   border-radius: 28px;
-  background-color: #540a05;
-  color: #efeccb;
+  background-color: #ffff;
+  border: 1px solid #361410;
+  color: #361410;
   margin-bottom: 24px;
-  object-fit: contain;
   p {
     font-family: "Semibold";
     font-size: 30px;
@@ -84,23 +83,30 @@ span {
       }
     }
   }
-  .total-pay{
+  .total-pay {
     display: flex;
     justify-content: space-between;
-    margin: 40px 0 60px 0;
+    margin: 40px 30px 0 30px;
   }
-  .btns{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100%;
+  .btns {
+    padding: 30px;
     display: grid;
-    grid-template-columns: repeat(2,auto);
+    grid-template-columns: repeat(2, 1fr);
 
-    button{
+
+    #btn1 {
+      background-color: #4caf50;
+    }
+    #btn2 {
+      background-color: #efeccb;
+    }
+
+    button {
+      cursor: pointer;
       border: none;
-      padding: 22px;
-      width: 100%;
+      padding: 28px;
+      font-family: "Bold";
+      font-size: 28px;
     }
   }
 }
