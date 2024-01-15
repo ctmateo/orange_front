@@ -52,23 +52,42 @@ span {
   border: 1px solid #361410;
   color: #361410;
   margin-bottom: 24px;
+  display: none;
   p {
     font-family: "Semibold";
     font-size: 30px;
   }
+  h2{
+    text-transform: none;
+  }
+  span{
+    font-size: 24px;
+    color: #540a05;
+  }
+  #cod{
+    display: block;
+    font-family: 'Italic';
+  }
+  #sub{
+    display: block;
+    margin-top: 20px;
+    font-family: 'Italic';
+  }
   .items-ofshop {
     padding: 20px;
-    height: 500px;
+    height: 100%;
     width: 600px;
     margin-top: 18px;
+    max-height: 280px;
     overflow: auto;
   }
   .inshop {
-    padding: 10px;
+    padding: 20px;
+    height: 100%;
     margin-bottom: 24px;
     background-color: #e8dfd7;
     color: #361410;
-    border-radius: 5px;
+    border-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -109,8 +128,23 @@ span {
       font-size: 28px;
     }
   }
+  &.active{
+    display: block;
+    animation: animationBtn 0.3s ease-in-out;
+  }
+  @keyframes animationBtn {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+
 }
 .shopping-cart {
+  cursor: pointer;
   height: 104px;
   width: 104px;
   border-radius: 10px;
@@ -137,7 +171,6 @@ span {
 
 .interline {
   margin: 20px 20px 40px 0;
-  cursor: pointer;
   transition: all 200ms;
   &:hover {
     .buttons {

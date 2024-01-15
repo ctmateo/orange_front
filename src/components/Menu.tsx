@@ -20,6 +20,7 @@ interface QuantitySelectorProps {
 const Menu = () => {
   const [data, setData] = useState<Items[]>([]);
   const [shoppingCart, setShoppingCart] = useState<Items[]>([]);
+  const [statusBtnShopping, setBtnShopping] = useState(false);
 
   useEffect(() => {
     const getItem = async () => {
@@ -35,9 +36,56 @@ const Menu = () => {
     getItem();
   }, []);
 
+  useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (event.shiftKey) {
+        setBtnShopping(!statusBtnShopping);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [statusBtnShopping]);
+
+  const translateTypeId = (item: string) =>{
+    switch(item){
+      case 'lasagna':
+        return 'Lasagna'
+      case 'burguer':
+        return 'Hamburguesa'
+      case 'saupotato':
+        return 'Salchipapa'
+      case 'corn':
+        return 'Mazorcada'
+      case 'milkshake':
+        return 'Malteada'
+      case 'grilled':
+        return 'Carnes'
+      case 'latte':
+        return 'Latte'
+      case 'juice':
+        return 'Jugo'
+      case 'drinks':
+        return 'Bebidas'
+      case 'beef':
+        return 'Cerveza'
+      case 'lemonade':
+        return 'Limonada'
+      case 'hotdog':
+        return 'Hot Dog'
+      case 'bbq':
+        return 'BBQ'
+    } 
+  }
+
   const DeleteItemShoppingCar = (item: Items) => {
     setShoppingCart((prevCart) => {
-      const updatedCart = prevCart.filter((cartItem) => cartItem.id !== item.id);
+      const updatedCart = prevCart.filter(
+        (cartItem) => cartItem.id !== item.id
+      );
       console.log("Carrito actualizado:", updatedCart);
       return updatedCart;
     });
@@ -77,10 +125,14 @@ const Menu = () => {
     return (
       <div className="quantity">
         <button onClick={decreaseQuantity}>-</button>
-        <p>{quantity}</p>
+        <p>x{quantity}</p>
         <button onClick={increaseQuantity}>+</button>
       </div>
     );
+  };
+
+  const openShoppingCard = () => {
+    setBtnShopping(!statusBtnShopping);
   };
 
   const shoppingCartWindow = () => {
@@ -98,15 +150,16 @@ const Menu = () => {
     const formattedTotal = totalAmount.toFixed(3);
 
     return (
-      <div className="window-shop">
-        <h2>Tu pedido</h2>
+      <div className={`window-shop ${statusBtnShopping ? 'active' : ''}`}>
+        <h2>Tu carrito</h2>
         <div className="items-ofshop">
           {shoppingCart.map((item) => (
             <div key={item.id} className="inshop">
-              <button onClick={() => DeleteItemShoppingCar(item)}>Eliminar</button>
               <div className="info-item">
-                <p>{item.type}</p>
                 <p>{item.title}</p>
+                <p>{translateTypeId(item.type)}</p>
+                <span id="cod">Cod 15848478489459 {item.quantity}</span>
+                <span id="sub">unidad ${item.price}</span>
               </div>
               <QuantitySelector
                 initialQuantity={item.quantity}
@@ -118,7 +171,7 @@ const Menu = () => {
           ))}
         </div>
         <div className="total-pay">
-          <p>Total a pagar</p>
+          <p>Costo total</p>
           <p>${formattedTotal}</p>
         </div>
         <div className="btns">
@@ -177,7 +230,7 @@ const Menu = () => {
       <section className="container-menu">
         <div className="navegation">
           {shoppingCartWindow()}
-          <div className="shopping-cart">
+          <div onClick={() => openShoppingCard()} className="shopping-cart">
             <img src="icons/car.svg" alt="car" />
           </div>
         </div>
