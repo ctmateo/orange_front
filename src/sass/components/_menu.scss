@@ -418,5 +418,20 @@ span {
     display: grid;
     grid-template-columns: repeat(1,auto);
   }
+  .card-combo{
+    height: 480px;
+  }
+  .card-publi-combo{
+    height: 100%;
+  }
+  .drinks{
+    .column-1{
+      display: grid;
+      grid-template-columns: repeat(1, auto);
+    }
+  }
+  .wrapper-columns{
+    flex-direction: column;
+  }
 
 }
