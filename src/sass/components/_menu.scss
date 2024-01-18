@@ -417,6 +417,7 @@ span {
   .double-grid{
     display: grid;
     grid-template-columns: repeat(1,auto);
+    padding: 0;
   }
   .card-combo{
     height: 480px;
@@ -428,10 +429,28 @@ span {
     .column-1{
       display: grid;
       grid-template-columns: repeat(1, auto);
+      padding: 0;
+    }
+    h2{
+      padding: 0;
     }
   }
   .wrapper-columns{
     flex-direction: column;
   }
+  .wrapper-green {
+    .border{
+      margin: 0;
+    }
+  }
+  .wrapper-lasagna , .wrapper-classic-pizza{
+    margin: 0;
+    padding: 0;
+  }
+  .wrapper-types-pizza{
+    padding: 0;
+  }
+
+
 
 }
