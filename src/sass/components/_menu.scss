@@ -75,6 +75,7 @@ span {
     font-family: 'Italic';
   }
   .items-ofshop {
+    flex-direction: column;
     padding: 20px;
     height: 100%;
     width: 600px;
@@ -98,12 +99,29 @@ span {
       align-items: center;
       gap: 10px;
       button {
-        height: 34px;
-        width: 34px;
+        opacity: 0.8;
+        display: flex;
+        justify-content: center;
+        line-height: 0;
+        align-items: center;
+        height: 42px;
+        width: 42px;
+        background-color: transparent;
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+        font-family: 'Medium';
+        color: #361410;
+        font-size: 42px;
+        border-radius: 10px;
+        &:hover{
+          opacity: 1;
+        }
       }
     }
     .btn-delete-item{
       button{
+        opacity: 0.4;
         cursor: pointer;
         background-color: #ec1e36;
         border: none;
@@ -115,6 +133,9 @@ span {
         font-family: 'Italic';
         font-size: 28px;
         color: #efeccb;
+        &:hover{
+          opacity: 1;
+        }
       }
       img{
         width: 30px;
