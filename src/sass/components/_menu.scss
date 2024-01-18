@@ -65,6 +65,7 @@ span {
     color: #540a05;
   }
   #cod{
+    opacity: 0.5;
     display: block;
     font-family: 'Italic';
   }
@@ -77,14 +78,14 @@ span {
     padding: 20px;
     height: 100%;
     width: 600px;
-    margin-top: 18px;
     max-height: 280px;
     overflow: auto;
   }
   .inshop {
-    padding: 20px;
+    position: relative;
     height: 100%;
-    margin-bottom: 24px;
+    padding: 28px;
+    margin-bottom: 42px;
     background-color: #e8dfd7;
     color: #361410;
     border-radius: 10px;
@@ -99,6 +100,24 @@ span {
       button {
         height: 34px;
         width: 34px;
+      }
+    }
+    .btn-delete-item{
+      button{
+        cursor: pointer;
+        background-color: #ec1e36;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        padding: 8px;
+        font-family: 'Italic';
+        font-size: 28px;
+        color: #efeccb;
+      }
+      img{
+        width: 30px;
       }
     }
   }

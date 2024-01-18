@@ -81,15 +81,15 @@ const Menu = () => {
     }
   };
 
-  // const DeleteItemShoppingCar = (item: Items) => {
-  //   setShoppingCart((prevCart) => {
-  //     const updatedCart = prevCart.filter(
-  //       (cartItem) => cartItem.id !== item.id
-  //     );
-  //     console.log("Carrito actualizado:", updatedCart);
-  //     return updatedCart;
-  //   });
-  // };
+  const DeleteItemShoppingCar = (item: Items) => {
+    setShoppingCart((prevCart) => {
+      const updatedCart = prevCart.filter(
+        (cartItem) => cartItem.id !== item.id
+      );
+      console.log("Carrito actualizado:", updatedCart);
+      return updatedCart;
+    });
+  };
   const AddItemShoppingCar = (item: Items) => {
     setShoppingCart((prevCart) => {
       const statusCartShopping = [...prevCart, { ...item, quantity: 1 }];
@@ -157,8 +157,11 @@ const Menu = () => {
             <div key={item.id} className="inshop">
               <div className="info-item">
                 <p>{item.title}</p>
-                <p>{translateTypeId(item.type)}</p>
+                <p>x{item.quantity} {translateTypeId(item.type)}</p>
                 <span id="cod">Cod 15848478489459 {item.quantity}</span>
+                <div className="btn-delete-item">
+                <button onClick={() => DeleteItemShoppingCar(item)}>Eliminar producto</button>
+              </div>
                 <span id="sub">unidad ${item.price}</span>
               </div>
               <QuantitySelector
