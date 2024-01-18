@@ -414,11 +414,9 @@ span {
 }
 
 @media screen and (orientation: portrait) {
-  .card-publi {
-    height: 250px;
-    margin-bottom: 20px;
+  .double-grid{
+    display: grid;
+    grid-template-columns: repeat(1,auto);
   }
-  .card-publi-combo {
-    height: 500px;
-  }
+
 }

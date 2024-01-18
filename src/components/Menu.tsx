@@ -160,7 +160,7 @@ const Menu = () => {
                 <p>x{item.quantity} {translateTypeId(item.type)}</p>
                 <span id="cod">Cod 15848478489459 {item.quantity}</span>
                 <div className="btn-delete-item">
-                <button onClick={() => DeleteItemShoppingCar(item)}>Eliminar producto</button>
+                <button onClick={() => DeleteItemShoppingCar(item)}>Eliminar producto(s)</button>
               </div>
                 <span id="sub">unidad ${item.price}</span>
               </div>
