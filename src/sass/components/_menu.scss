@@ -414,6 +414,9 @@ span {
 }
 
 @media screen and (orientation: portrait) {
+  .container-menu{
+    padding: 40px;
+  }
   .double-grid{
     display: grid;
     grid-template-columns: repeat(1,auto);
