@@ -12,6 +12,13 @@ span {
   font-size: 30px;
 }
 
+.grid{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3,auto);
+  justify-content: space-between;
+}
+
 .navegation {
   position: fixed;
   bottom: 0;
@@ -462,6 +469,11 @@ span {
 }
 
 @media screen and (orientation: portrait) {
+
+  .grid{
+    display: grid;
+    grid-template-columns: repeat(1,auto);
+  }
   .container-menu {
     padding: 40px;
     .title-menu{
@@ -542,5 +554,8 @@ span {
   }
   .wrapper-lasagna{
     padding: 40px;
+  }
+  .navegation{
+    display: none;
   }
 }
