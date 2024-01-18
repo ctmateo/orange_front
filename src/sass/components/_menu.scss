@@ -6,6 +6,7 @@ h2 {
   font-family: "Rush";
   font-size: 68px;
 }
+
 span {
   font-family: "Semibold";
   font-size: 30px;
@@ -21,22 +22,29 @@ span {
   align-items: flex-end;
   flex-direction: column;
 }
+
 .items-ofshop {
-  scrollbar-width: thin; /* Ancho de la barra de scroll en Firefox */
-  scrollbar-color: yellow #555; /* Color del indicador y fondo en Firefox */
+  scrollbar-width: thin;
+  /* Ancho de la barra de scroll en Firefox */
+  scrollbar-color: yellow #555;
+  /* Color del indicador y fondo en Firefox */
 
   /* Estilos del indicador de la barra de scroll para navegadores webkit */
   &::-webkit-scrollbar {
-    width: 12px; /* Ancho de la barra de scroll en webkit */
+    width: 12px;
+    /* Ancho de la barra de scroll en webkit */
   }
 
   &::-webkit-scrollbar-track {
-    background-color: yellowgreen; /* Color de fondo en webkit */
+    background-color: yellowgreen;
+    /* Color de fondo en webkit */
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: blue; /* Color del indicador en webkit */
-    border-radius: 5px; /* Bordes redondeados en webkit */
+    background-color: blue;
+    /* Color del indicador en webkit */
+    border-radius: 5px;
+    /* Bordes redondeados en webkit */
   }
 
   &::-webkit-scrollbar-thumb:hover {
@@ -53,27 +61,33 @@ span {
   color: #361410;
   margin-bottom: 24px;
   display: none;
+
   p {
     font-family: "Semibold";
     font-size: 30px;
   }
-  h2{
+
+  h2 {
     text-transform: none;
   }
-  span{
+
+  span {
     font-size: 24px;
     color: #540a05;
   }
-  #cod{
+
+  #cod {
     opacity: 0.5;
     display: block;
     font-family: 'Italic';
   }
-  #sub{
+
+  #sub {
     display: block;
     margin-top: 20px;
     font-family: 'Italic';
   }
+
   .items-ofshop {
     flex-direction: column;
     padding: 20px;
@@ -82,6 +96,7 @@ span {
     max-height: 280px;
     overflow: auto;
   }
+
   .inshop {
     position: relative;
     height: 100%;
@@ -93,11 +108,13 @@ span {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     .quantity {
       margin-right: 10px;
       display: flex;
       align-items: center;
       gap: 10px;
+
       button {
         opacity: 0.8;
         display: flex;
@@ -114,13 +131,15 @@ span {
         color: #361410;
         font-size: 42px;
         border-radius: 10px;
-        &:hover{
+
+        &:hover {
           opacity: 1;
         }
       }
     }
-    .btn-delete-item{
-      button{
+
+    .btn-delete-item {
+      button {
         opacity: 0.4;
         cursor: pointer;
         background-color: #ec1e36;
@@ -133,20 +152,24 @@ span {
         font-family: 'Italic';
         font-size: 28px;
         color: #efeccb;
-        &:hover{
+
+        &:hover {
           opacity: 1;
         }
       }
-      img{
+
+      img {
         width: 30px;
       }
     }
   }
+
   .total-pay {
     display: flex;
     justify-content: space-between;
     margin: 40px 30px 0 30px;
   }
+
   .btns {
     padding: 30px;
     display: grid;
@@ -156,6 +179,7 @@ span {
     #btn1 {
       background-color: #4caf50;
     }
+
     #btn2 {
       background-color: #efeccb;
     }
@@ -168,14 +192,17 @@ span {
       font-size: 28px;
     }
   }
-  &.active{
+
+  &.active {
     display: block;
     animation: animationBtn 0.3s ease-in-out;
   }
+
   @keyframes animationBtn {
     from {
       transform: translateY(100%);
     }
+
     to {
       transform: translateY(0);
     }
@@ -183,6 +210,7 @@ span {
 
 
 }
+
 .shopping-cart {
   cursor: pointer;
   height: 104px;
@@ -192,6 +220,7 @@ span {
   display: flex;
   align-items: center;
   justify-content: center;
+
   img {
     width: 80%;
     color: #e8dfd7;
@@ -203,6 +232,7 @@ span {
   background-color: #e8dfd7;
   color: #400601;
 }
+
 .title-menu {
   margin-left: 70px;
   font-size: 100px;
@@ -212,6 +242,7 @@ span {
 .interline {
   margin: 20px 20px 40px 0;
   transition: all 200ms;
+
   &:hover {
     .buttons {
       opacity: 1;
@@ -222,6 +253,7 @@ span {
 .subtitle {
   display: flex;
   flex-direction: column;
+
   span {
     display: flex;
     flex-direction: column;
@@ -237,6 +269,7 @@ span {
   color: #ce3b27;
   flex-wrap: wrap;
 }
+
 .description {
   font-family: "Semibold";
   font-size: 32px;
@@ -249,6 +282,7 @@ span {
 .column-grid {
   background-color: blue;
 }
+
 .wrapper-horn {
   padding-bottom: 150px;
 }
@@ -259,6 +293,7 @@ span {
 
 .wrapper-green {
   padding: 0 0 150px 0;
+
   .border {
     border-radius: 28px;
     margin: 0 70px 0 70px;
@@ -294,6 +329,7 @@ span {
 
 .wrapper-types-pizza {
   padding: 70px 70px 0 70px;
+
   .wrapper-tp-pizza {
     cursor: pointer;
     border-radius: 28px;
@@ -302,14 +338,17 @@ span {
     height: 500px;
   }
 }
+
 .wrapper-pizza {
   .card-combo {
     background-color: transparent;
+
     .combo-1 {
       height: 60%;
       background-color: #540a05;
       border-radius: 28px;
     }
+
     .combo-2 {
       height: 35%;
       width: 100%;
@@ -320,19 +359,23 @@ span {
     }
   }
 }
+
 .wrapper-lasagna {
   padding: 40px;
   border-radius: 28px;
   margin: 0 70px 0 70px;
   background-color: hsl(5, 97%, 13%);
   color: #efeccb;
+
   h2 {
     margin-bottom: 18px;
   }
+
   .interline {
     margin: 0;
   }
 }
+
 .wrapper-item-burguer {
   order: -1;
 }
@@ -363,9 +406,11 @@ span {
 .drinks {
   height: 100%;
   width: 100%;
+
   h2 {
     padding-left: 70px;
   }
+
   .column-1 {
     padding: 0 70px 0 70px;
     display: grid;
@@ -373,10 +418,12 @@ span {
     grid-template-columns: repeat(3, auto);
     width: 100%;
   }
+
   // .interline{
   //   background-color: blue;
   // }
 }
+
 .wrapper-milkshake {
   display: flex;
   flex-direction: column;
@@ -392,6 +439,7 @@ span {
     margin: 0 18px 0 0;
     font-size: 34px;
   }
+
   .buttons {
     display: flex;
     height: 54px;
@@ -414,46 +462,85 @@ span {
 }
 
 @media screen and (orientation: portrait) {
-  .container-menu{
+  .container-menu {
     padding: 40px;
+    .title-menu{
+      padding: 0;
+      margin: 0;
+      h1{
+        font-size: 78px;
+      }
+    }
   }
-  .double-grid{
+
+  .double-grid {
     display: grid;
-    grid-template-columns: repeat(1,auto);
+    grid-template-columns: repeat(1, auto);
     padding: 0;
   }
-  .card-combo{
-    height: 480px;
+
+  .wrapper-pizza{
+    .card-combo {
+      height: 480px;
+      background-color: #361410;
+      margin-bottom: 54px;
+    }
   }
-  .card-publi-combo{
+
+  .card-combo {
+    height: 480px;
+    background-color: #361410;
+    margin-bottom: 54px;
+  }
+
+  .combo-1 {
+    display: none;
+  }
+
+  .combo-2 {
+    display: none;
+  }
+
+
+  .card-publi-combo {
     height: 100%;
   }
-  .drinks{
-    .column-1{
+
+  .drinks {
+    .column-1 {
       display: grid;
       grid-template-columns: repeat(1, auto);
       padding: 0;
     }
-    h2{
+
+    h2 {
       padding: 0;
     }
   }
-  .wrapper-columns{
+
+  .wrapper-columns {
     flex-direction: column;
   }
+
   .wrapper-green {
-    .border{
+    .border {
       margin: 0;
+      margin-bottom: 54px;
+      border: none;
     }
   }
-  .wrapper-lasagna , .wrapper-classic-pizza{
+
+  .wrapper-lasagna,
+  .wrapper-classic-pizza,.wrapper-grilled,.wrapper-bbq {
     margin: 0;
     padding: 0;
   }
-  .wrapper-types-pizza{
+
+  .wrapper-types-pizza {
     padding: 0;
+    margin-bottom: 34px;
   }
-
-
-
+  .wrapper-lasagna{
+    padding: 40px;
+  }
 }
