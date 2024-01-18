@@ -12,10 +12,10 @@ span {
   font-size: 30px;
 }
 
-.grid{
+.grid {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3,auto);
+  grid-template-columns: repeat(3, auto);
   justify-content: space-between;
 }
 
@@ -340,7 +340,7 @@ span {
   .wrapper-tp-pizza {
     cursor: pointer;
     border-radius: 28px;
-    background-color: #540a05;
+    background-color: #361410;
     width: 100%;
     height: 500px;
   }
@@ -371,7 +371,7 @@ span {
   padding: 40px;
   border-radius: 28px;
   margin: 0 70px 0 70px;
-  background-color: hsl(5, 97%, 13%);
+  background-color: #361410;
   color: #efeccb;
 
   h2 {
@@ -405,7 +405,7 @@ span {
 
 .border-less-padding {
   padding: 40px;
-  background-color: #400601;
+  background-color: #361410;
   color: #efeccb;
   border-radius: 28px;
 }
@@ -470,16 +470,19 @@ span {
 
 @media screen and (orientation: portrait) {
 
-  .grid{
+  .grid {
     display: grid;
-    grid-template-columns: repeat(1,auto);
+    grid-template-columns: repeat(1, auto);
   }
+
   .container-menu {
     padding: 40px;
-    .title-menu{
+
+    .title-menu {
       padding: 0;
       margin: 0;
-      h1{
+
+      h1 {
         font-size: 78px;
       }
     }
@@ -491,7 +494,7 @@ span {
     padding: 0;
   }
 
-  .wrapper-pizza{
+  .wrapper-pizza {
     .card-combo {
       height: 480px;
       background-color: #361410;
@@ -543,7 +546,12 @@ span {
   }
 
   .wrapper-lasagna,
-  .wrapper-classic-pizza,.wrapper-grilled,.wrapper-bbq {
+  .wrapper-classic-pizza,
+  .wrapper-grilled,
+  .wrapper-bbq,
+  .wrapper-horn,
+  .wrapper-kitchen,
+  .wrapper-green {
     margin: 0;
     padding: 0;
   }
@@ -552,10 +560,30 @@ span {
     padding: 0;
     margin-bottom: 34px;
   }
-  .wrapper-lasagna{
+
+  .wrapper-lasagna {
     padding: 40px;
+    margin-bottom: 54px;
   }
-  .navegation{
+
+  .navegation {
     display: none;
+  }
+
+  .wrapper-classic-pizza {
+    margin-bottom: 34px;
+
+    .interline {
+      padding: 0;
+      margin: 0 0 38px 0;
+    }
+  }
+
+  .wrapper-tp-pizza {
+    margin-bottom: 54px;
+  }
+
+  .border-less-padding{
+    margin-bottom: 54px;
   }
 }
