@@ -21,22 +21,50 @@ span {
   align-items: flex-end;
   flex-direction: column;
 }
-.items-ofshop {
-  scrollbar-width: thin; /* Ancho de la barra de scroll en Firefox */
-  scrollbar-color: yellow #555; /* Color del indicador y fondo en Firefox */
 
-  /* Estilos del indicador de la barra de scroll para navegadores webkit */
+
+.layaout {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; 
+  height: 100%;
+  width: 100%;
+  background-color: #2e0e0782;
+
+}
+.layaout.active {
+  display: none;
+}
+
+.pre-shop{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; 
+  height: 80%;
+  width: 60%;
+  background-color: $white-color;
+  border-radius: $border-size;
+}
+
+.items-ofshop {
+  scrollbar-width: thin; 
+  scrollbar-color: yellow #555;
+
   &::-webkit-scrollbar {
-    width: 12px; /* Ancho de la barra de scroll en webkit */
+    width: 12px; 
   }
 
   &::-webkit-scrollbar-track {
-    background-color: yellowgreen; /* Color de fondo en webkit */
+    background-color: yellowgreen; 
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: blue; /* Color del indicador en webkit */
-    border-radius: 5px; /* Bordes redondeados en webkit */
+    background-color: blue; 
+    border-radius: 5px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
@@ -48,31 +76,31 @@ span {
   position: relative;
   padding: 30px;
   border-radius: 28px;
-  background-color: #ffff;
-  border: 1px solid #361410;
-  color: #361410;
+  background-color: $white-color;
+  border: 1px solid $primarycolor;
+  color: $secondcolor;
   margin-bottom: 24px;
   display: none;
   p {
     font-family: "Semibold";
     font-size: 30px;
   }
-  h2{
+  h2 {
     text-transform: none;
   }
-  span{
+  span {
     font-size: 24px;
-    color: #540a05;
+    color: $secondcolor;
   }
-  #cod{
+  #cod {
     opacity: 0.5;
     display: block;
-    font-family: 'Italic';
+    font-family: "Italic";
   }
-  #sub{
+  #sub {
     display: block;
     margin-top: 20px;
-    font-family: 'Italic';
+    font-family: "Italic";
   }
   .items-ofshop {
     flex-direction: column;
@@ -87,8 +115,8 @@ span {
     height: 100%;
     padding: 28px;
     margin-bottom: 42px;
-    background-color: #e8dfd7;
-    color: #361410;
+    background-color: $white-color;
+    color: $secondcolor;
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
@@ -110,34 +138,34 @@ span {
         border: none;
         font-size: 28px;
         cursor: pointer;
-        font-family: 'Medium';
-        color: #361410;
+        font-family: "Medium";
+        color: $btn-color-main;
         font-size: 42px;
         border-radius: 10px;
-        &:hover{
+        &:hover {
           opacity: 1;
         }
       }
     }
-    .btn-delete-item{
-      button{
+    .btn-delete-item {
+      button {
         opacity: 0.4;
         cursor: pointer;
-        background-color: #ec1e36;
+        background-color: $alert-btn;
         border: none;
         display: flex;
         justify-content: center;
         align-items: center;
         border-radius: 5px;
         padding: 8px;
-        font-family: 'Italic';
+        font-family: "Italic";
         font-size: 28px;
-        color: #efeccb;
-        &:hover{
+        color: $white-color;
+        &:hover {
           opacity: 1;
         }
       }
-      img{
+      img {
         width: 30px;
       }
     }
@@ -152,12 +180,11 @@ span {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 
-
     #btn1 {
       background-color: #4caf50;
     }
     #btn2 {
-      background-color: #efeccb;
+      background-color: $white-color;
     }
 
     button {
@@ -168,7 +195,7 @@ span {
       font-size: 28px;
     }
   }
-  &.active{
+  &.active {
     display: block;
     animation: animationBtn 0.3s ease-in-out;
   }
@@ -180,28 +207,26 @@ span {
       transform: translateY(0);
     }
   }
-
-
 }
 .shopping-cart {
   cursor: pointer;
   height: 104px;
   width: 104px;
   border-radius: 10px;
-  background-color: #ababab;
+  background-color: $white-color;
+  border: 1px solid $secondcolor;
   display: flex;
   align-items: center;
   justify-content: center;
   img {
     width: 80%;
-    color: #e8dfd7;
   }
 }
 
 .container-menu {
   position: relative;
-  background-color: #e8dfd7;
-  color: #400601;
+  background-color: $white-color;
+  color: $secondcolor;
 }
 .title-menu {
   margin-left: 70px;
@@ -234,7 +259,7 @@ span {
   font-family: "Bold";
   font-size: 38px;
   margin-bottom: 5px;
-  color: #ce3b27;
+  color: $color-title;
   flex-wrap: wrap;
 }
 .description {
@@ -246,9 +271,6 @@ span {
   margin-top: 10px;
 }
 
-.column-grid {
-  background-color: blue;
-}
 .wrapper-horn {
   padding-bottom: 150px;
 }
@@ -288,7 +310,7 @@ span {
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: #400601;
+  background-color: $primarycolor;
   border-radius: 28px;
 }
 
@@ -297,7 +319,7 @@ span {
   .wrapper-tp-pizza {
     cursor: pointer;
     border-radius: 28px;
-    background-color: #540a05;
+    background-color: $primarycolor;
     width: 100%;
     height: 500px;
   }
@@ -307,7 +329,7 @@ span {
     background-color: transparent;
     .combo-1 {
       height: 60%;
-      background-color: #540a05;
+      background-color: $primarycolor;
       border-radius: 28px;
     }
     .combo-2 {
@@ -315,7 +337,7 @@ span {
       width: 100%;
       position: absolute;
       bottom: 0;
-      background-color: #540a05;
+      background-color: $primarycolor;
       border-radius: 28px;
     }
   }
@@ -324,8 +346,8 @@ span {
   padding: 40px;
   border-radius: 28px;
   margin: 0 70px 0 70px;
-  background-color: hsl(5, 97%, 13%);
-  color: #efeccb;
+  background-color: $primarycolor;
+  color: $white-color;
   h2 {
     margin-bottom: 18px;
   }
@@ -348,15 +370,15 @@ span {
 }
 
 .border {
-  border: 1px solid #361410;
+  border: 1px solid $primarycolor;
   border-radius: 28px;
   margin: 0 70px 0 70px;
 }
 
 .border-less-padding {
   padding: 40px;
-  background-color: #400601;
-  color: #efeccb;
+  background-color: $primarycolor;
+  color: $white-color;
   border-radius: 28px;
 }
 
@@ -407,53 +429,62 @@ span {
     margin-right: 8px;
     height: 54px;
     border: none;
-    background-color: #361410;
+    background-color: $btn-color-main;
     border-radius: 5px;
-    color: #efeccb;
+    color: $white-color;
   }
 }
 
 @media screen and (orientation: portrait) {
-  .container-menu{
+  .container-menu {
     padding: 40px;
   }
-  .double-grid{
+  .double-grid {
     display: grid;
-    grid-template-columns: repeat(1,auto);
+    grid-template-columns: repeat(1, auto);
     padding: 0;
   }
-  .card-combo{
+  .card-combo {
     height: 480px;
   }
-  .card-publi-combo{
+  .card-publi-combo {
     height: 100%;
   }
-  .drinks{
-    .column-1{
+  .drinks {
+    .column-1 {
       display: grid;
       grid-template-columns: repeat(1, auto);
       padding: 0;
     }
-    h2{
+    h2 {
       padding: 0;
     }
   }
-  .wrapper-columns{
-    flex-direction: column;
+  .wrapper-columns {
+    display: flex;
+    flex-wrap: wrap;
   }
   .wrapper-green {
-    .border{
+    .border {
       margin: 0;
     }
   }
-  .wrapper-lasagna , .wrapper-classic-pizza{
+  .wrapper-lasagna,
+  .wrapper-classic-pizza {
     margin: 0;
     padding: 0;
   }
-  .wrapper-types-pizza{
+  .wrapper-types-pizza {
     padding: 0;
   }
 
+  .wrapper-columns {
+    display: flex;
+    flex-wrap: wrap;
 
-
+    .column-1{
+      position: relative;
+      top: -10px;
+    }
+  }
 }

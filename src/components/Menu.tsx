@@ -22,6 +22,8 @@ const Menu = () => {
   const [shoppingCart, setShoppingCart] = useState<Items[]>([]);
   const [statusBtnShopping, setBtnShopping] = useState(false);
 
+  const [openDialog, setOpenDialog] = useState(false);
+
   useEffect(() => {
     const getItem = async () => {
       try {
@@ -91,6 +93,10 @@ const Menu = () => {
     });
   };
   const AddItemShoppingCar = (item: Items) => {
+    if(item.type === 'burguer' || item.type === 'hotdog'){
+      setOpenDialog(!openDialog)
+    }
+
     setShoppingCart((prevCart) => {
       const statusCartShopping = [...prevCart, { ...item, quantity: 1 }];
       console.log("Carrito actualizado:", statusCartShopping);
@@ -157,11 +163,15 @@ const Menu = () => {
             <div key={item.id} className="inshop">
               <div className="info-item">
                 <p>{item.title}</p>
-                <p>x{item.quantity} {translateTypeId(item.type)}</p>
+                <p>
+                  x{item.quantity} {translateTypeId(item.type)}
+                </p>
                 <span id="cod">Cod 15848478489459 {item.quantity}</span>
                 <div className="btn-delete-item">
-                <button onClick={() => DeleteItemShoppingCar(item)}>Eliminar producto(s)</button>
-              </div>
+                  <button onClick={() => DeleteItemShoppingCar(item)}>
+                    Eliminar producto(s)
+                  </button>
+                </div>
                 <span id="sub">unidad ${item.price}</span>
               </div>
               <QuantitySelector
@@ -195,7 +205,7 @@ const Menu = () => {
     return (
       <div className="wrapper-columns">
         {Array.from({ length: quantityColumns }).map((_, columnIndex) => (
-          <div key={columnIndex} className={`column-${columnIndex + 1}`}>
+          <div key={columnIndex} className={`column-${columnIndex}`}>
             {elements
               .slice(
                 columnIndex * elementsForColumn,
@@ -231,6 +241,12 @@ const Menu = () => {
   return (
     <>
       <section className="container-menu">
+        <div
+          onClick={() => setOpenDialog(true)}
+          className={`layaout ${openDialog ? "active" : ""}`}
+        >
+          <div className="pre-shop"></div>
+        </div>
         <div className="navegation">
           {shoppingCartWindow()}
           <div onClick={() => openShoppingCard()} className="shopping-cart">
