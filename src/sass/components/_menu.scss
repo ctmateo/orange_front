@@ -6,9 +6,17 @@ h2 {
   font-family: "Rush";
   font-size: 68px;
 }
+
 span {
   font-family: "Semibold";
   font-size: 30px;
+}
+
+.grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: space-between;
 }
 
 .navegation {
@@ -81,6 +89,7 @@ span {
   color: $secondcolor;
   margin-bottom: 24px;
   display: none;
+
   p {
     font-family: "Semibold";
     font-size: 30px;
@@ -88,7 +97,7 @@ span {
   h2 {
     text-transform: none;
   }
-  span {
+  span{
     font-size: 24px;
     color: $secondcolor;
   }
@@ -97,11 +106,12 @@ span {
     display: block;
     font-family: "Italic";
   }
-  #sub {
+  #sub{
     display: block;
     margin-top: 20px;
     font-family: "Italic";
   }
+
   .items-ofshop {
     flex-direction: column;
     padding: 20px;
@@ -110,6 +120,7 @@ span {
     max-height: 280px;
     overflow: auto;
   }
+
   .inshop {
     position: relative;
     height: 100%;
@@ -121,11 +132,13 @@ span {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     .quantity {
       margin-right: 10px;
       display: flex;
       align-items: center;
       gap: 10px;
+
       button {
         opacity: 0.8;
         display: flex;
@@ -160,8 +173,8 @@ span {
         padding: 8px;
         font-family: "Italic";
         font-size: 28px;
-        color: $white-color;
-        &:hover {
+        color: #efeccb;
+        &:hover{
           opacity: 1;
         }
       }
@@ -170,11 +183,13 @@ span {
       }
     }
   }
+
   .total-pay {
     display: flex;
     justify-content: space-between;
     margin: 40px 30px 0 30px;
   }
+
   .btns {
     padding: 30px;
     display: grid;
@@ -183,6 +198,7 @@ span {
     #btn1 {
       background-color: #4caf50;
     }
+
     #btn2 {
       background-color: $white-color;
     }
@@ -199,15 +215,18 @@ span {
     display: block;
     animation: animationBtn 0.3s ease-in-out;
   }
+
   @keyframes animationBtn {
     from {
       transform: translateY(100%);
     }
+
     to {
       transform: translateY(0);
     }
   }
 }
+
 .shopping-cart {
   cursor: pointer;
   height: 104px;
@@ -218,6 +237,7 @@ span {
   display: flex;
   align-items: center;
   justify-content: center;
+
   img {
     width: 80%;
   }
@@ -228,6 +248,7 @@ span {
   background-color: $white-color;
   color: $secondcolor;
 }
+
 .title-menu {
   margin-left: 70px;
   font-size: 100px;
@@ -237,6 +258,7 @@ span {
 .interline {
   margin: 20px 20px 40px 0;
   transition: all 200ms;
+
   &:hover {
     .buttons {
       opacity: 1;
@@ -247,6 +269,7 @@ span {
 .subtitle {
   display: flex;
   flex-direction: column;
+
   span {
     display: flex;
     flex-direction: column;
@@ -262,6 +285,7 @@ span {
   color: $color-title;
   flex-wrap: wrap;
 }
+
 .description {
   font-family: "Semibold";
   font-size: 32px;
@@ -281,6 +305,7 @@ span {
 
 .wrapper-green {
   padding: 0 0 150px 0;
+
   .border {
     border-radius: 28px;
     margin: 0 70px 0 70px;
@@ -316,6 +341,7 @@ span {
 
 .wrapper-types-pizza {
   padding: 70px 70px 0 70px;
+
   .wrapper-tp-pizza {
     cursor: pointer;
     border-radius: 28px;
@@ -324,14 +350,17 @@ span {
     height: 500px;
   }
 }
+
 .wrapper-pizza {
   .card-combo {
     background-color: transparent;
+
     .combo-1 {
       height: 60%;
       background-color: $primarycolor;
       border-radius: 28px;
     }
+
     .combo-2 {
       height: 35%;
       width: 100%;
@@ -342,6 +371,7 @@ span {
     }
   }
 }
+
 .wrapper-lasagna {
   padding: 40px;
   border-radius: 28px;
@@ -351,10 +381,12 @@ span {
   h2 {
     margin-bottom: 18px;
   }
+
   .interline {
     margin: 0;
   }
 }
+
 .wrapper-item-burguer {
   order: -1;
 }
@@ -385,9 +417,11 @@ span {
 .drinks {
   height: 100%;
   width: 100%;
+
   h2 {
     padding-left: 70px;
   }
+
   .column-1 {
     padding: 0 70px 0 70px;
     display: grid;
@@ -395,10 +429,12 @@ span {
     grid-template-columns: repeat(3, auto);
     width: 100%;
   }
+
   // .interline{
   //   background-color: blue;
   // }
 }
+
 .wrapper-milkshake {
   display: flex;
   flex-direction: column;
@@ -414,6 +450,7 @@ span {
     margin: 0 18px 0 0;
     font-size: 34px;
   }
+
   .buttons {
     display: flex;
     height: 54px;
@@ -436,55 +473,89 @@ span {
 }
 
 @media screen and (orientation: portrait) {
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+  }
+
   .container-menu {
     padding: 40px;
   }
-  .double-grid {
+  .double-grid{
     display: grid;
     grid-template-columns: repeat(1, auto);
     padding: 0;
   }
-  .card-combo {
+  .card-combo{
     height: 480px;
   }
-  .card-publi-combo {
+  .card-publi-combo{
     height: 100%;
   }
-  .drinks {
-    .column-1 {
+  .drinks{
+    .column-1{
       display: grid;
       grid-template-columns: repeat(1, auto);
       padding: 0;
     }
-    h2 {
+
+    h2  {
       padding: 0;
     }
   }
+
   .wrapper-columns {
-    display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
   }
+
   .wrapper-green {
-    .border {
+    .border  {
       margin: 0;
+      margin-bottom: 54px;
+      border: none;
     }
   }
+
   .wrapper-lasagna,
-  .wrapper-classic-pizza {
+  .wrapper-classic-pizza,
+  .wrapper-grilled,
+  .wrapper-bbq,
+  .wrapper-horn,
+  .wrapper-kitchen,
+  .wrapper-green {
     margin: 0;
     padding: 0;
   }
-  .wrapper-types-pizza {
+
+  .wrapper-types-pizza  {
     padding: 0;
+    margin-bottom: 34px;
   }
 
-  .wrapper-columns {
-    display: flex;
-    flex-wrap: wrap;
+  .wrapper-lasagna {
+    padding: 40px;
+    margin-bottom: 54px;
+  }
 
-    .column-1{
-      position: relative;
-      top: -10px;
+  .navegation {
+    display: none;
+  }
+
+  .wrapper-classic-pizza {
+    margin-bottom: 34px;
+
+    .interline {
+      padding: 0;
+      margin: 0 0 38px 0;
     }
+  }
+
+  .wrapper-tp-pizza {
+    margin-bottom: 54px;
+  }
+
+  .border-less-padding{
+    margin-bottom: 54px;
   }
 }

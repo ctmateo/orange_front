@@ -168,10 +168,8 @@ const Menu = () => {
                 </p>
                 <span id="cod">Cod 15848478489459 {item.quantity}</span>
                 <div className="btn-delete-item">
-                  <button onClick={() => DeleteItemShoppingCar(item)}>
-                    Eliminar producto(s)
-                  </button>
-                </div>
+                <button onClick={() => DeleteItemShoppingCar(item)}>Eliminar producto(s)</button>
+              </div>
                 <span id="sub">unidad ${item.price}</span>
               </div>
               <QuantitySelector
@@ -269,7 +267,18 @@ const Menu = () => {
                   <span>PIZZA</span>cLASIcA
                 </h2>
               </div>
-              {renderElements("pizzaC", 3)}
+              <div className="grid">
+                {data.map((item) => (
+                  item.type === 'pizzaC' ?
+                    <div key={item.id} className="interline">
+                      <p className="title-type-menu">{item.title}</p>
+                      <p className="description">{item.description}</p>
+                    </div>
+                    : null
+                )
+                )}
+              </div>
+
             </div>
             <div className="double-grid">
               <div className="wrapper-special-pizza">
