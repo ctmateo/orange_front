@@ -7,7 +7,7 @@ export const useShiftKeyEffect = (
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
       if (event.shiftKey) {
-        setBtnShopping((prevStatus) => !prevStatus);
+        setBtnShopping(() => !statusBtnShopping);
       }
     };
 
