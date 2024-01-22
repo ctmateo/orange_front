@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../sass/components/_menu.scss";
 import axios from "axios";
-
+import renderItemsFromDb from "./global-components/RenderItemsFromDb";
+import { useShiftKeyEffect } from "./global-components/KeyboardEffects";
+import { ShoppingCartWindow,openShoppingCard } from "./global-components/ShoppingCartUtils";
 interface Items {
   id: number;
   type: string;
@@ -12,17 +14,12 @@ interface Items {
   price: number;
   quantity: number;
 }
-interface QuantitySelectorProps {
-  initialQuantity: number;
-  onQuantityChange: (newQuantity: number) => void;
-}
 
 const Menu = () => {
   const [data, setData] = useState<Items[]>([]);
-  const [shoppingCart, setShoppingCart] = useState<Items[]>([]);
   const [statusBtnShopping, setBtnShopping] = useState(false);
 
-  const [openDialog, setOpenDialog] = useState(false);
+  const [openDialog, setOpenDialog] = useState(true);
 
   useEffect(() => {
     const getItem = async () => {
@@ -38,204 +35,9 @@ const Menu = () => {
     getItem();
   }, []);
 
-  useEffect(() => {
-    const handleKeyPress = (event: KeyboardEvent) => {
-      if (event.shiftKey) {
-        setBtnShopping(!statusBtnShopping);
-      }
-    };
+  useShiftKeyEffect(statusBtnShopping, setBtnShopping);
 
-    window.addEventListener("keydown", handleKeyPress);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyPress);
-    };
-  }, [statusBtnShopping]);
-
-  const translateTypeId = (item: string) => {
-    switch (item) {
-      case "lasagna":
-        return "Lasagna";
-      case "burguer":
-        return "Hamburguesa";
-      case "saupotato":
-        return "Salchipapa";
-      case "corn":
-        return "Mazorcada";
-      case "milkshake":
-        return "Malteada";
-      case "grilled":
-        return "Carnes";
-      case "latte":
-        return "Latte";
-      case "juice":
-        return "Jugo";
-      case "drinks":
-        return "Bebidas";
-      case "beef":
-        return "Cerveza";
-      case "lemonade":
-        return "Limonada";
-      case "hotdog":
-        return "Hot Dog";
-      case "bbq":
-        return "BBQ";
-    }
-  };
-
-  const DeleteItemShoppingCar = (item: Items) => {
-    setShoppingCart((prevCart) => {
-      const updatedCart = prevCart.filter(
-        (cartItem) => cartItem.id !== item.id
-      );
-      console.log("Carrito actualizado:", updatedCart);
-      return updatedCart;
-    });
-  };
-  const AddItemShoppingCar = (item: Items) => {
-    if(item.type === 'burguer' || item.type === 'hotdog'){
-      setOpenDialog(!openDialog)
-    }
-
-    setShoppingCart((prevCart) => {
-      const statusCartShopping = [...prevCart, { ...item, quantity: 1 }];
-      console.log("Carrito actualizado:", statusCartShopping);
-      return statusCartShopping;
-    });
-  };
-
-  const QuantitySelector: React.FC<QuantitySelectorProps> = ({
-    initialQuantity,
-    onQuantityChange,
-  }) => {
-    const [quantity, setQuantity] = useState(initialQuantity);
-
-    const decreaseQuantity = () => {
-      if (quantity > 1) {
-        setQuantity((prevQuantity) => {
-          const newQuantity = prevQuantity - 1;
-          onQuantityChange(newQuantity);
-          return newQuantity;
-        });
-      }
-    };
-
-    const increaseQuantity = () => {
-      setQuantity((prevQuantity) => {
-        const newQuantity = prevQuantity + 1;
-        onQuantityChange(newQuantity);
-        return newQuantity;
-      });
-    };
-
-    return (
-      <div className="quantity">
-        <button onClick={decreaseQuantity}>-</button>
-        <p>x{quantity}</p>
-        <button onClick={increaseQuantity}>+</button>
-      </div>
-    );
-  };
-
-  const openShoppingCard = () => {
-    setBtnShopping(!statusBtnShopping);
-  };
-
-  const shoppingCartWindow = () => {
-    const handleQuantityChange = (newQuantity: number, itemId: number) => {
-      setShoppingCart((prevCart) =>
-        prevCart.map((item) =>
-          item.id === itemId ? { ...item, quantity: newQuantity } : item
-        )
-      );
-    };
-    const totalAmount = shoppingCart.reduce(
-      (total, item) => total + Number(item.price) * item.quantity,
-      0
-    );
-    const formattedTotal = totalAmount.toFixed(3);
-
-    return (
-      <div className={`window-shop ${statusBtnShopping ? "active" : ""}`}>
-        <h2>Tu carrito</h2>
-        <div className="items-ofshop">
-          {shoppingCart.map((item) => (
-            <div key={item.id} className="inshop">
-              <div className="info-item">
-                <p>{item.title}</p>
-                <p>
-                  x{item.quantity} {translateTypeId(item.type)}
-                </p>
-                <span id="cod">Cod 15848478489459 {item.quantity}</span>
-                <div className="btn-delete-item">
-                <button onClick={() => DeleteItemShoppingCar(item)}>Eliminar producto(s)</button>
-              </div>
-                <span id="sub">unidad ${item.price}</span>
-              </div>
-              <QuantitySelector
-                initialQuantity={item.quantity}
-                onQuantityChange={(newQuantity) =>
-                  handleQuantityChange(newQuantity, item.id)
-                }
-              />
-            </div>
-          ))}
-        </div>
-        <div className="total-pay">
-          <p>Costo total</p>
-          <p>${formattedTotal}</p>
-        </div>
-        <div className="btns">
-          <button id="btn1">Mandar a Whatsapp</button>
-          <button id="btn2">Ordenar ahora</button>
-        </div>
-      </div>
-    );
-  };
-
-  const renderElements = (type: string, quantityColumns: number) => {
-    const elements = data
-      .filter((item) => item.type === type)
-      .slice(0, quantityColumns === 2 ? 6 : 7);
-
-    const elementsForColumn = Math.ceil(elements.length / quantityColumns);
-
-    return (
-      <div className="wrapper-columns">
-        {Array.from({ length: quantityColumns }).map((_, columnIndex) => (
-          <div key={columnIndex} className={`column-${columnIndex}`}>
-            {elements
-              .slice(
-                columnIndex * elementsForColumn,
-                (columnIndex + 1) * elementsForColumn
-              )
-              .map((item) => (
-                <article key={item.id} className="interline">
-                  <p className="title-type-menu">{item.title}</p>
-                  <p className="description">{item.description}</p>
-                  {item.type === "pizzaC" || item.type === "pizzaE" ? null : (
-                    <div className="items-buy">
-                      <div className="container-price">
-                        <span>${item.price}</span>
-                      </div>
-                      <div className="buttons">
-                        <button
-                          onClick={() => AddItemShoppingCar(item)}
-                          className="buy-btn"
-                        >
-                          Añadir al carrito
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </article>
-              ))}
-          </div>
-        ))}
-      </div>
-    );
-  };
-
+  console.log('statusbtn', statusBtnShopping);
   return (
     <>
       <section className="container-menu">
@@ -246,14 +48,37 @@ const Menu = () => {
           <div className="pre-shop"></div>
         </div>
         <div className="navegation">
-          {shoppingCartWindow()}
-          <div onClick={() => openShoppingCard()} className="shopping-cart">
+          {ShoppingCartWindow()}
+          <div
+            onClick={() => openShoppingCard()}
+            className="shopping-cart"
+          >
+            <div className="items-in-list">
+              <p>+9</p>
+            </div>
             <img src="icons/car.svg" alt="car" />
           </div>
         </div>
         <div className="title-menu">
-          <Link to="/">volver</Link>
-          <h1>Menu digital</h1>
+          <div className="square">
+            <Link className="back-page" to="/">
+              <img
+                id="back-1"
+                src="icons/icon_back.svg"
+                alt="back_mundodelicioso"
+              />
+              <img
+                id="back-2"
+                src="icons/icon_back_primary.svg"
+                alt="back_primary_mundodelicioso"
+              />
+              <span>Volver atras</span>
+            </Link>
+          </div>
+          <h1>
+            Menu <br />
+            <span>Mundo Delicioso</span>
+          </h1>
         </div>
         {/* //Pizza */}
         <article className="wrapper-horn">
@@ -263,32 +88,32 @@ const Menu = () => {
           <div className="wrapper-pizza">
             <div className="wrapper-classic-pizza">
               <div className="subtitle">
-                <h2>
-                  <span>PIZZA</span>cLASIcA
-                </h2>
+                <h2>cLASIcA</h2>
+                <span>Pizza</span>
               </div>
               <div className="grid">
-                {data.map((item) => (
-                  item.type === 'pizzaC' ?
+                {data.map((item) =>
+                  item.type === "pizzaC" ? (
                     <div key={item.id} className="interline">
                       <p className="title-type-menu">{item.title}</p>
                       <p className="description">{item.description}</p>
                     </div>
-                    : null
-                )
+                  ) : null
                 )}
               </div>
-
             </div>
             <div className="double-grid">
               <div className="wrapper-special-pizza">
                 <div className="wrapper-item-special-pizza">
                   <div className="subtitle">
-                    <h2>
-                      <span>PIZZA</span>toque original
-                    </h2>
+                    <h2>Toque original</h2>
+                    <span>Más sabores pizza</span>
                   </div>
-                  {renderElements("pizzaE", 1)}
+                  {renderItemsFromDb({
+                    data,
+                    type: "pizzaE",
+                    quantityColumns: 1,
+                  })}
                 </div>
               </div>
               <div className="card-combo">
@@ -301,11 +126,14 @@ const Menu = () => {
         {/* //Lasagna */}
         <div className="wrapper-lasagna">
           <div className="subtitle">
-            <h2>
-              <span>Rellenita</span>Lasagna
-            </h2>
+            <h2>Lasagna</h2>
+            <span>Extra queso</span>
           </div>
-          {renderElements("lasagna", 3)}
+          {renderItemsFromDb({
+            data,
+            type: "lasagna",
+            quantityColumns: 1,
+          })}
         </div>
 
         {/* //Hamburguesas*/}
@@ -314,12 +142,15 @@ const Menu = () => {
           <div className="double-grid">
             <article className="wrapper-burguer">
               <div className="subtitle">
-                <h2>
-                  <span>Artesanal</span>Hamburguesas
-                </h2>
+                <h2>Hamburguesas</h2>
+                <span>Artesanales</span>
               </div>
               <div className="wrapper-item-burguer">
-                {renderElements("burguer", 1)}
+                {renderItemsFromDb({
+                  data,
+                  type: "burguer",
+                  quantityColumns: 1,
+                })}
               </div>
             </article>
             <div className="card-combo"></div>
@@ -327,12 +158,15 @@ const Menu = () => {
           <div className="double-grid">
             <article className="wrapper-hotdog">
               <div className="subtitle">
-                <h2>
-                  <span>Esponjoso</span>Hot dog
-                </h2>
+                <h2>Hot dog</h2>
+                <span>Con queso</span>
               </div>
               <div className="wrapper-item-hotdog">
-                {renderElements("hotdog", 1)}
+                {renderItemsFromDb({
+                  data,
+                  type: "hotdog",
+                  quantityColumns: 1,
+                })}
               </div>
             </article>
             <div className="card-combo"></div>
@@ -344,19 +178,25 @@ const Menu = () => {
             <div className="double-grid">
               <article className="wrapper-saupotato">
                 <div className="subtitle">
-                  <h2>
-                    <span>Tradicional</span>Salchipapa
-                  </h2>
+                  <h2>Salchipapa</h2>
+                  <span>Extra papas</span>
                 </div>
-                {renderElements("saupotato", 1)}
+                {renderItemsFromDb({
+                  data,
+                  type: "saupotato",
+                  quantityColumns: 1,
+                })}
               </article>
               <article className="wrapper-corn">
                 <div className="subtitle">
-                  <h2>
-                    <span>Tradicional</span>Mazorcada
-                  </h2>
+                  <h2>Mazorcada</h2>
+                  <span>Extra maíz</span>
                 </div>
-                {renderElements("corn", 1)}
+                {renderItemsFromDb({
+                  data,
+                  type: "corn",
+                  quantityColumns: 1,
+                })}
               </article>
             </div>
           </div>
@@ -365,24 +205,30 @@ const Menu = () => {
             <div className="border-less-padding">
               <article className="wrapper-grilled">
                 <div className="subtitle">
-                  <h2>
-                    <span>Con ensalada</span>A la plancha
-                  </h2>
+                  <h2>A la plancha</h2>
+                  <span>Con ensalada</span>
                 </div>
                 <div className="wrapper-item-grilled">
-                  {renderElements("grilled", 1)}
+                  {renderItemsFromDb({
+                    data,
+                    type: "grilled",
+                    quantityColumns: 1,
+                  })}
                 </div>
               </article>
             </div>
             <div className="border-less-padding">
               <article className="wrapper-bbq">
                 <div className="subtitle">
-                  <h2>
-                    <span>Salsa BBQ</span>Especial BBQ
-                  </h2>
+                  <h2>Especial BBQ</h2>
+                  <span>Con ensalada</span>
                 </div>
                 <div className="wrapper-item-bbq">
-                  {renderElements("bbq", 1)}
+                  {renderItemsFromDb({
+                    data,
+                    type: "bbq",
+                    quantityColumns: 1,
+                  })}
                 </div>
               </article>
             </div>
@@ -391,35 +237,65 @@ const Menu = () => {
         <div className="drinks">
           <div className="wrapper-milkshake">
             <h2>Malteadas</h2>
-            <div className="grid">{renderElements("milkshake", 1)}</div>
+            <div className="grid">
+              {" "}
+              {renderItemsFromDb({
+                data,
+                type: "milkshake",
+                quantityColumns: 1,
+              })}
+            </div>
           </div>
           <div className="wrapper-latte">
             <h2>Latte</h2>
             <div className="wrapper-item-latte">
-              {renderElements("latte", 1)}
+              {renderItemsFromDb({
+                data,
+                type: "latte",
+                quantityColumns: 1,
+              })}
             </div>
           </div>
           <div className="wrapper-lemonade">
             <h2>Limonadas</h2>
             <div className="wrapper-item-lemonade">
-              {renderElements("lemonade", 1)}
+              {renderItemsFromDb({
+                data,
+                type: "lemonade",
+                quantityColumns: 1,
+              })}
             </div>
           </div>
           <div className="wrapper-juice">
             <h2>Jugos Naturales</h2>
             <div className="wrapper-item-juice">
-              {renderElements("juice", 1)}
+              {renderItemsFromDb({
+                data,
+                type: "juice",
+                quantityColumns: 1,
+              })}
             </div>
           </div>
           <div className="wrapper-drinks">
             <h2>Bebidas</h2>
             <div className="wrapper-item-drinks">
-              {renderElements("drinks", 1)}
+              {renderItemsFromDb({
+                data,
+                type: "drinks",
+                quantityColumns: 1,
+              })}
             </div>
           </div>
           <div className="wrapper-beef">
             <h2>Cerveza</h2>
-            <div className="wrapper-item-beef">{renderElements("beef", 1)}</div>
+            <div className="wrapper-item-beef">
+              {" "}
+              {renderItemsFromDb({
+                data,
+                type: "beef",
+                quantityColumns: 1,
+              })}
+            </div>
           </div>
         </div>
       </section>

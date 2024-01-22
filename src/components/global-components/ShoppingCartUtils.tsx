@@ -1,0 +1,121 @@
+import React, { useState } from "react";
+import { QuantitySelector } from "./QuantitySelector";
+import translateTypeId from "./TranslateTypeId";
+
+interface Items {
+  id: number;
+  type: string;
+  img: string;
+  title: string;
+  description: string;
+  price: number;
+  quantity: number;
+}
+
+let shoppingCartState: React.Dispatch<React.SetStateAction<Items[]>> | null = null;
+let setBtnShopping: React.Dispatch<React.SetStateAction<boolean>>;
+
+export const setShoppingCartState = (setState: React.Dispatch<React.SetStateAction<Items[]>>) => {
+  shoppingCartState = setState;
+};
+
+export const setBtnShoppingState = (setState: React.Dispatch<React.SetStateAction<boolean>>) => {
+  setBtnShopping = setState;
+};
+
+export const ShoppingCartWindow = () => {
+  const [shoppingCart, setShoppingCart] = useState<Items[]>([]);
+  const [statusBtnShopping, setBtn] = useState(true);
+  setShoppingCartState(setShoppingCart);
+  setBtnShoppingState(setBtn);
+
+  const handleQuantityChange = (newQuantity: number, itemId: number) => {
+    setShoppingCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === itemId ? { ...item, quantity: newQuantity } : item
+      )
+    );
+  };
+
+  const totalAmount = shoppingCart.reduce(
+    (total, item) => total + Number(item.price) * item.quantity,
+    0
+  );
+  const formattedTotal = totalAmount.toFixed(3);
+  console.log('el estado de button en window es',statusBtnShopping);
+  return (
+    <div className={`window-shop ${statusBtnShopping ? "active" : ""}`}>
+      <h2>Tu carrito</h2>
+      <div className="items-ofshop">
+        {shoppingCart.map((item) => (
+          <div key={item.id} className="inshop">
+            <div className="info-item">
+              <p>{item.title}</p>
+              <p>x{item.quantity} {translateTypeId(item.type)}</p>
+              <span id="cod">Cod 15848478489459 {item.quantity}</span>
+              <div className="btn-delete-item">
+                <button
+                  onClick={() => DeleteItemShoppingCar(item, setShoppingCart)}
+                >
+                  Eliminar producto(s)
+                </button>
+              </div>
+              <span id="sub">unidad ${item.price}</span>
+            </div>
+            <QuantitySelector
+              initialQuantity={item.quantity}
+              onQuantityChange={(newQuantity) =>
+                handleQuantityChange(newQuantity, item.id)
+              }
+            />
+          </div>
+        ))}
+      </div>
+      <div className="total-pay">
+        <p>Costo total</p>
+        <p>${formattedTotal}</p>
+      </div>
+      <div className="btns">
+        <button id="btn1">
+          {" "}
+          <img src="icons/w_icon.svg" alt="wht_mundodelicioso" />
+          Enviar pedido a WhatsApp
+        </button>
+        <button id="btn2">Proceder al pago ahora</button>
+      </div>
+    </div>
+  );
+};
+
+export const DeleteItemShoppingCar = (
+  item: Items,
+  setShoppingCart: React.Dispatch<React.SetStateAction<Items[]>>
+) => {
+  setShoppingCart((prevCart) => {
+    const updatedCart = prevCart.filter((cartItem) => cartItem.id !== item.id);
+    return updatedCart;
+  });
+};
+
+export const AddItemShoppingCar = (
+  item: Items,
+  setOpenDialog: React.Dispatch<React.SetStateAction<boolean>>,
+  openDialog: boolean
+) => {
+  if (item.type === "burguer" || item.type === "hotdog") {
+    setOpenDialog(!openDialog);
+  }
+
+  if (shoppingCartState) {
+    shoppingCartState((prevCart) => {
+      const statusCartShopping = [...prevCart, { ...item, quantity: 1 }];
+      return statusCartShopping;
+    });
+  }
+};
+
+export const openShoppingCard = () => {
+  setBtnShopping((statusBtnShopping) => {
+    return !statusBtnShopping;
+  });
+};

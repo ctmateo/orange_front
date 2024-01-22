@@ -4,6 +4,11 @@
 }
 
 @font-face {
+  font-family: 'Black';
+  src: url('/src/fonts/PradockBlack.otf');
+}
+
+@font-face {
   font-family: 'Bold';
   src: url('/src/fonts/PradockBold.otf') format('truetype');
 }
@@ -14,8 +19,8 @@
 }
 
 @font-face {
-  font-family: 'Rush';
-  src: url('/src/fonts/PradockBold.otf');
+  font-family: 'Hit';
+  src: url('/src/fonts/Hit.otf');
 }
 
 @font-face{
