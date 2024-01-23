@@ -23,7 +23,7 @@ const Menu = () => {
   const [data, setData] = useState<Items[]>([]);
   const [statusBtnShopping, setBtnShopping] = useState(false);
 
-  const [openDialog, setOpenDialog] = useState(true);
+  const [openDialog, setOpenDialog] = useState(false);
 
   useEffect(() => {
     const getItem = async () => {
@@ -41,18 +41,20 @@ const Menu = () => {
 
   useShiftKeyEffect(statusBtnShopping, setBtnShopping);
 
+  console.log('open', openDialog)
+
   return (
     <>
       <section className="container-menu">
         <div
-          onClick={() => setOpenDialog(true)}
-          className={`layaout ${openDialog ? "active" : ""}`}
+          onClick={() => setOpenDialog(false)}
+          className={`layout ${openDialog ? "active" : "desactive"}`}
         >
-          <div className="pre-shop"></div>
+          {/* <div className="pre-shop"></div> */}
+          {ShoppingCartWindow()}
         </div>
         <div className="navegation">
-          {ShoppingCartWindow()}
-          <div onClick={() => openShoppingCard()} className="shopping-cart">
+          <div onClick={() => {setOpenDialog(true);openShoppingCard()}} className="shopping-cart">
             <div className="items-in-list">
               <p>+</p>
             </div>
