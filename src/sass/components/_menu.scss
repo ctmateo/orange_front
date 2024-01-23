@@ -483,7 +483,7 @@ span {
 }
 
 .wrapper-lasagna {
-  padding: 40px;
+  padding: 54px;
   border-radius: 28px;
   margin: 0 70px 0 70px;
   background-color: $primarycolor;
@@ -524,26 +524,19 @@ span {
 .drinks {
   height: 100%;
   width: 100%;
-  padding: 0 72px 0 72px;
+  padding: 0 0 0 72px;
 
-
-  .column-1 {
-    padding: 0 70px 0 70px;
+  .subtitle{
+    margin: 0;
+  }
+  .column-0 {
     display: grid;
     justify-content: space-between;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, 1fr);
     width: 100%;
   }
-
-  // .interline{
-  //   background-color: blue;
-  // }
 }
 
-.wrapper-milkshake {
-  display: flex;
-  flex-direction: column;
-}
 
 .items-buy {
   height: 54px;
@@ -579,6 +572,27 @@ span {
 
 @media screen and (orientation: portrait) {
 
+  h2{
+    font-size: 54px !important; 
+  }
+  .items-buy{
+    .buttons{
+      opacity: 1;
+    }
+  }
+
+  .title-menu{
+    margin: 0;
+    h1{
+      margin-bottom: 80px;
+    }
+  }
+
+
+  .buy-btn{
+    opacity: 1;
+  }
+
   .grid {
     display: grid;
     grid-template-columns: repeat(1, auto);
@@ -594,12 +608,22 @@ span {
   }
   .card-combo{
     height: 480px;
+    margin-bottom: 50px;
+    background-color: $primarycolor !important;
+
+    .combo-1{
+      display: none;
+    } 
+    .combo-2{
+      display: none;
+    }
   }
   .card-publi-combo{
     height: 100%;
   }
   .drinks{
-    .column-1{
+    padding: 0;
+    .column-0{
       display: grid;
       grid-template-columns: repeat(1, auto);
       padding: 0;
@@ -641,10 +665,6 @@ span {
   .wrapper-lasagna {
     padding: 40px;
     margin-bottom: 54px;
-  }
-
-  .navegation {
-    display: none;
   }
 
   .wrapper-classic-pizza {

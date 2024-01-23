@@ -4,7 +4,11 @@ import "../sass/components/_menu.scss";
 import axios from "axios";
 import renderItemsFromDb from "./global-components/RenderItemsFromDb";
 import { useShiftKeyEffect } from "./global-components/KeyboardEffects";
-import { ShoppingCartWindow,openShoppingCard } from "./global-components/ShoppingCartUtils";
+import {
+  ShoppingCartWindow,
+  openShoppingCard,
+} from "./global-components/ShoppingCartUtils";
+import Footer from "./Footer";
 interface Items {
   id: number;
   type: string;
@@ -48,10 +52,7 @@ const Menu = () => {
         </div>
         <div className="navegation">
           {ShoppingCartWindow()}
-          <div
-            onClick={() => openShoppingCard()}
-            className="shopping-cart"
-          >
+          <div onClick={() => openShoppingCard()} className="shopping-cart">
             <div className="items-in-list">
               <p>+</p>
             </div>
@@ -234,19 +235,20 @@ const Menu = () => {
           </div>
         </div>
         <div className="drinks">
+            <div className="subtitle">
+              <h2>Malteadas</h2>
+            </div>
           <div className="wrapper-milkshake">
-            <h2>Malteadas</h2>
-            <div className="grid">
-              {" "}
               {renderItemsFromDb({
                 data,
                 type: "milkshake",
                 quantityColumns: 1,
               })}
-            </div>
           </div>
+            <div className="subtitle">
+              <h2>Latte</h2>
+            </div>
           <div className="wrapper-latte">
-            <h2>Latte</h2>
             <div className="wrapper-item-latte">
               {renderItemsFromDb({
                 data,
@@ -255,8 +257,10 @@ const Menu = () => {
               })}
             </div>
           </div>
+            <div className="subtitle">
+              <h2>Limonadas</h2>
+            </div>
           <div className="wrapper-lemonade">
-            <h2>Limonadas</h2>
             <div className="wrapper-item-lemonade">
               {renderItemsFromDb({
                 data,
@@ -265,8 +269,10 @@ const Menu = () => {
               })}
             </div>
           </div>
+            <div className="subtitle">
+              <h2>Jugos Naturales</h2>
+            </div>
           <div className="wrapper-juice">
-            <h2>Jugos Naturales</h2>
             <div className="wrapper-item-juice">
               {renderItemsFromDb({
                 data,
@@ -275,8 +281,10 @@ const Menu = () => {
               })}
             </div>
           </div>
+            <div className="subtitle">
+              <h2>Bebidas</h2>
+            </div>
           <div className="wrapper-drinks">
-            <h2>Bebidas</h2>
             <div className="wrapper-item-drinks">
               {renderItemsFromDb({
                 data,
@@ -285,8 +293,10 @@ const Menu = () => {
               })}
             </div>
           </div>
+            <div className="subtitle">
+              <h2>Cerveza</h2>
+            </div>
           <div className="wrapper-beef">
-            <h2>Cerveza</h2>
             <div className="wrapper-item-beef">
               {" "}
               {renderItemsFromDb({
@@ -298,6 +308,7 @@ const Menu = () => {
           </div>
         </div>
       </section>
+      <Footer></Footer>
     </>
   );
 };
