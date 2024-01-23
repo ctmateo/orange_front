@@ -37,7 +37,6 @@ const Menu = () => {
 
   useShiftKeyEffect(statusBtnShopping, setBtnShopping);
 
-  console.log('statusbtn', statusBtnShopping);
   return (
     <>
       <section className="container-menu">
@@ -54,7 +53,7 @@ const Menu = () => {
             className="shopping-cart"
           >
             <div className="items-in-list">
-              <p>+9</p>
+              <p>+</p>
             </div>
             <img src="icons/car.svg" alt="car" />
           </div>

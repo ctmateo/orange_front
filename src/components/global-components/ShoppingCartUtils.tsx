@@ -12,20 +12,30 @@ interface Items {
   quantity: number;
 }
 
-let shoppingCartState: React.Dispatch<React.SetStateAction<Items[]>> | null = null;
+let shoppingCartState: React.Dispatch<React.SetStateAction<Items[]>> | null =
+  null;
 let setBtnShopping: React.Dispatch<React.SetStateAction<boolean>>;
 
-export const setShoppingCartState = (setState: React.Dispatch<React.SetStateAction<Items[]>>) => {
+
+export const setShoppingCartState = (
+  setState: React.Dispatch<React.SetStateAction<Items[]>>
+) => {
   shoppingCartState = setState;
 };
 
-export const setBtnShoppingState = (setState: React.Dispatch<React.SetStateAction<boolean>>) => {
+export const setBtnShoppingState = (
+  setState: React.Dispatch<React.SetStateAction<boolean>>
+) => {
   setBtnShopping = setState;
 };
+
+
+
 
 export const ShoppingCartWindow = () => {
   const [shoppingCart, setShoppingCart] = useState<Items[]>([]);
   const [statusBtnShopping, setBtn] = useState(true);
+
   setShoppingCartState(setShoppingCart);
   setBtnShoppingState(setBtn);
 
@@ -42,16 +52,17 @@ export const ShoppingCartWindow = () => {
     0
   );
   const formattedTotal = totalAmount.toFixed(3);
-  console.log('el estado de button en window es',statusBtnShopping);
   return (
     <div className={`window-shop ${statusBtnShopping ? "active" : ""}`}>
-      <h2>Tu carrito</h2>
+      <h2>Carrito de compras</h2>
       <div className="items-ofshop">
         {shoppingCart.map((item) => (
           <div key={item.id} className="inshop">
             <div className="info-item">
               <p>{item.title}</p>
-              <p>x{item.quantity} {translateTypeId(item.type)}</p>
+              <p>
+                x{item.quantity} {translateTypeId(item.type)}
+              </p>
               <span id="cod">Cod 15848478489459 {item.quantity}</span>
               <div className="btn-delete-item">
                 <button
@@ -76,8 +87,7 @@ export const ShoppingCartWindow = () => {
         <p>${formattedTotal}</p>
       </div>
       <div className="btns">
-        <button id="btn1">
-          {" "}
+        <button id="btn1" onClick={() => sendListToWhatsapp(shoppingCart)}>
           <img src="icons/w_icon.svg" alt="wht_mundodelicioso" />
           Enviar pedido a WhatsApp
         </button>
@@ -102,6 +112,7 @@ export const AddItemShoppingCar = (
   setOpenDialog: React.Dispatch<React.SetStateAction<boolean>>,
   openDialog: boolean
 ) => {
+
   if (item.type === "burguer" || item.type === "hotdog") {
     setOpenDialog(!openDialog);
   }
@@ -113,6 +124,26 @@ export const AddItemShoppingCar = (
     });
   }
 };
+
+const sendListToWhatsapp = (list: Items[]) => {
+  const whatsappLink = 'https://wa.me/3143845669';
+
+  let message = 'Estuve navegando por mundodelicioso.com.co y me gustaría hacer un pedido para entrega a domicilio. ¿Podrían preparme lo siguiente?":\n\n';
+
+  for (let item of list) {
+    const line = `x${item.quantity} ${translateTypeId(item.type)} ${item.title}\n`;
+    message += line;
+  }
+
+  const encodedMessage = encodeURIComponent(message);
+  const fullLink = `${whatsappLink}?text=${encodedMessage}`;
+
+  window.open(fullLink, '_blank');
+};
+
+
+
+
 
 export const openShoppingCard = () => {
   setBtnShopping((statusBtnShopping) => {
