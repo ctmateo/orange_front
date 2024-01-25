@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { QuantitySelector } from "./QuantitySelector";
 import translateTypeId from "./TranslateTypeId";
+import '../../sass/components/global-components/_shopping-cart.scss'
 
 interface Items {
   id: number;
@@ -15,8 +16,8 @@ interface Items {
 let shoppingCartState: React.Dispatch<React.SetStateAction<Items[]>> | null =
   null;
 
-let shoppingCartState2: React.Dispatch<React.SetStateAction<Items[]>> | null =
-  null;
+let itemsInCartShopping: React.Dispatch<React.SetStateAction<Items[]>> | null = null;
+
 let setBtnShopping: React.Dispatch<React.SetStateAction<boolean>>;
 
 export const StateCountItemsCart = React.createContext<Items[]>([]);
@@ -36,7 +37,7 @@ export const setBtnShoppingState = (
 export const setCountState = (
   setState: React.Dispatch<React.SetStateAction<Items[]>>
 ) => {
-  shoppingCartState2 = setState;
+  itemsInCartShopping = setState;
 };
 
 export const ShoppingCartWindow = () => {
@@ -45,6 +46,7 @@ export const ShoppingCartWindow = () => {
 
   setShoppingCartState(setShoppingCart);
   setBtnShoppingState(setBtn);
+  setCountState(setShoppingCart);
 
   const handleQuantityChange = (newQuantity: number, itemId: number) => {
     setShoppingCart((prevCart) =>
@@ -70,7 +72,7 @@ export const ShoppingCartWindow = () => {
               <p>
                 x{item.quantity} {translateTypeId(item.type)}
               </p>
-              <span id="cod">Cod 15848478489459 {item.quantity}</span>
+              <span id="cod">Cod null {item.quantity}</span>
               <div className="btn-delete-item">
                 <button
                   onClick={() => DeleteItemShoppingCar(item, setShoppingCart)}
@@ -112,8 +114,14 @@ const CountItemFromCartShopping = () => {
 
 export const DeleteItemShoppingCar = (
   item: Items,
-  setShoppingCart: React.Dispatch<React.SetStateAction<Items[]>>
+  setShoppingCart: React.Dispatch<React.SetStateAction<Items[]>>,
 ) => {
+  if (itemsInCartShopping) {
+    itemsInCartShopping((prev) => {
+      const updatedCart2 = prev.filter((cartItem) => cartItem.id !== item.id);
+      return updatedCart2;
+    });
+  }
   setShoppingCart((prevCart) => {
     const updatedCart = prevCart.filter((cartItem) => cartItem.id !== item.id);
     return updatedCart;
@@ -129,10 +137,10 @@ export const AddItemShoppingCar = (
     setOpenDialog(!openDialog);
   }
 
-  if (shoppingCartState && shoppingCartState2) {
-    shoppingCartState2((prev) => {
-      const statusCartShopping2 = [...prev, { ...item, quantity: 1 }];
-      return statusCartShopping2;
+  if (shoppingCartState && itemsInCartShopping) {
+    itemsInCartShopping((prev) => {
+      const listOfItemsInCart = [...prev, { ...item, quantity: 1 }];
+      return listOfItemsInCart;
     });
     shoppingCartState((prevCart) => {
       const statusCartShopping = [...prevCart, { ...item, quantity: 1 }];

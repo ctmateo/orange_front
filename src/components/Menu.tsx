@@ -46,7 +46,7 @@ const Menu = () => {
     <>
       <section className="container-menu">
         <div
-          onClick={() => setOpenDialog(false)}
+          onClick={() => setOpenDialog(openDialog)}
           className={`layout ${openDialog ? "active" : "desactive"}`}
         >
           {/* <div className="pre-shop"></div> */}

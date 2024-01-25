@@ -27,7 +27,7 @@ const renderItemsFromDb: React.FC<RenderItemsFromDbProps> = ({
   type,
   quantityColumns,
 }) => {
-  const [openDialog, setOpenDialog] = useState(false);
+  const [openDialog, setOpenDialog] = useState(true);
 
   const elements = data
     .filter((item) => item.type === type)

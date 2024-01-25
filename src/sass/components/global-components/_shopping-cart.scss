@@ -1,0 +1,230 @@
+@import '../../abstracts/variables/variables.scss';
+
+.window-shop {
+  padding: 30px;
+  border-radius: 28px;
+  background-color: $white-color;
+  border: 1px solid $primarycolor;
+  color: $secondcolor;
+  margin-bottom: 24px;
+  width: 600px;
+  display: none;
+  height: 90vh;
+
+  p {
+    font-family: "Semibold";
+    font-size: 30px;
+  }
+  h2 {
+    font-family: 'Bold';
+    text-transform: none;
+    color: $secondcolor;
+    margin-bottom: 18px;
+  }
+  span{
+    font-size: 24px;
+    color: $secondcolor;
+
+  }
+  #cod {
+    opacity: 0.5;
+    display: block;
+    font-family: "Italic";
+  }
+  #sub{
+    display: block;
+    margin-top: 20px;
+    font-family: "Italic";
+  }
+
+  .items-ofshop {
+    flex-direction: column;
+    padding: 20px;
+    width: 90%;
+    max-height: 50%;
+    overflow: auto;
+    overflow-x: hidden;
+  }
+
+  .inshop {
+    width: 90%;
+    position: relative;
+    padding: 24px;
+    margin-bottom: 24px;
+    background-color: #d8cabe;
+    color: $secondcolor;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .quantity {
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      p{
+        color: $secondcolor;
+      }
+
+      button {
+        opacity: 0.8;
+        display: flex;
+        justify-content: center;
+        line-height: 0;
+        align-items: center;
+        height: 42px;
+        width: 42px;
+        background-color: transparent;
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+        font-family: "Medium";
+        color: $secondcolor;
+        font-size: 42px;
+        border-radius: 10px;
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+    .btn-delete-item {
+      button {
+        opacity: 0.4;
+        cursor: pointer;
+        background-color: $alert-btn;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        padding: 8px;
+        font-family: "Italic";
+        font-size: 28px;
+        color: #efeccb;
+        &:hover{
+          opacity: 1;
+        }
+      }
+      img {
+        width: 30px;
+      }
+    }
+  }
+
+  .total-pay {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 30px 0 30px;
+    p{
+      font-family: 'Bold';
+    }
+  }
+
+  .btns {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+
+    #btn1 {
+      font-family: 'Medium';
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      background-color: #429e45;
+      color: $white-color;
+      border-radius: $border-size;
+      img{
+        width: 28px;
+      }
+
+      &:hover{
+        background-color: #429e45;
+      }
+    }
+
+    #btn2 {
+      opacity: 0.3;
+      background-color: transparent;
+      color: $secondcolor;
+      border-radius: $border-size;
+    }
+
+    button {
+
+      border: none;
+      padding: 28px;
+      font-family: "Bold";
+      font-size: 28px;
+    }
+  }
+  &.active {
+    display: block;
+    animation: animationBtn 0.3s ease-in-out;
+  }
+
+  @keyframes animationBtn {
+    from {
+      transform: translateY(100%);
+    }
+
+    to {
+      transform: translateY(0);
+    }
+  }
+}
+
+.shopping-cart {
+  position: relative;
+  cursor: pointer;
+  height: 104px;
+  width: 104px;
+  border-radius: 10px;
+  background-color: $white-color;
+  border: 1px solid $secondcolor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 80%;
+  }
+
+  .items-in-list{
+    position: absolute;
+    background-color: $alert-btn;
+    top: -15px;
+    right: -12px;
+    height: 38px;
+    width: 38px;
+    color: $white-color;
+    font-family: 'Semibold';
+    font-size: 24px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.items-ofshop {
+
+  &::-webkit-scrollbar {
+    width: 12px; 
+  }
+
+  &::-wekit-scrollbar-track {
+    background-color: $white-color; 
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $primarycolor; 
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: $primarycolor;
+  }
+}
