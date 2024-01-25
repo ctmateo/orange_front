@@ -108,6 +108,10 @@ span {
   display: none;
 }
 
+.pr{
+  background-color: blue;
+}
+
 .pre-shop{
   position: fixed;
   top: 50%;
@@ -149,7 +153,9 @@ span {
   border: 1px solid $primarycolor;
   color: $secondcolor;
   margin-bottom: 24px;
+  width: 600px;
   display: none;
+  height: 90vh;
 
   p {
     font-family: "Semibold";

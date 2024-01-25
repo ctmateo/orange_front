@@ -3,12 +3,15 @@ import { Link } from "react-router-dom";
 import "../sass/components/_menu.scss";
 import axios from "axios";
 import renderItemsFromDb from "./global-components/RenderItemsFromDb";
-import { useShiftKeyEffect } from "./global-components/KeyboardEffects";
 import {
   ShoppingCartWindow,
   openShoppingCard,
 } from "./global-components/ShoppingCartUtils";
+
+import CountItemFromCartShopping from "./global-components/ShoppingCartUtils";
+
 import Footer from "./Footer";
+ 
 interface Items {
   id: number;
   type: string;
@@ -21,9 +24,9 @@ interface Items {
 
 const Menu = () => {
   const [data, setData] = useState<Items[]>([]);
-  const [statusBtnShopping, setBtnShopping] = useState(false);
 
   const [openDialog, setOpenDialog] = useState(false);
+
 
   useEffect(() => {
     const getItem = async () => {
@@ -39,10 +42,6 @@ const Menu = () => {
     getItem();
   }, []);
 
-  useShiftKeyEffect(statusBtnShopping, setBtnShopping);
-
-  console.log('open', openDialog)
-
   return (
     <>
       <section className="container-menu">
@@ -51,12 +50,18 @@ const Menu = () => {
           className={`layout ${openDialog ? "active" : "desactive"}`}
         >
           {/* <div className="pre-shop"></div> */}
-          {ShoppingCartWindow()}
+
         </div>
         <div className="navegation">
-          <div onClick={() => {setOpenDialog(true);openShoppingCard()}} className="shopping-cart">
+        {ShoppingCartWindow()}
+          <div
+            onClick={() => {
+              openShoppingCard();
+            }}
+            className="shopping-cart"
+          >
             <div className="items-in-list">
-              <p>+</p>
+              {CountItemFromCartShopping()}
             </div>
             <img src="icons/car.svg" alt="car" />
           </div>
@@ -237,19 +242,19 @@ const Menu = () => {
           </div>
         </div>
         <div className="drinks">
-            <div className="subtitle">
-              <h2>Malteadas</h2>
-            </div>
-          <div className="wrapper-milkshake">
-              {renderItemsFromDb({
-                data,
-                type: "milkshake",
-                quantityColumns: 1,
-              })}
+          <div className="subtitle">
+            <h2>Malteadas</h2>
           </div>
-            <div className="subtitle">
-              <h2>Latte</h2>
-            </div>
+          <div className="wrapper-milkshake">
+            {renderItemsFromDb({
+              data,
+              type: "milkshake",
+              quantityColumns: 1,
+            })}
+          </div>
+          <div className="subtitle">
+            <h2>Latte</h2>
+          </div>
           <div className="wrapper-latte">
             <div className="wrapper-item-latte">
               {renderItemsFromDb({
@@ -259,9 +264,9 @@ const Menu = () => {
               })}
             </div>
           </div>
-            <div className="subtitle">
-              <h2>Limonadas</h2>
-            </div>
+          <div className="subtitle">
+            <h2>Limonadas</h2>
+          </div>
           <div className="wrapper-lemonade">
             <div className="wrapper-item-lemonade">
               {renderItemsFromDb({
@@ -271,9 +276,9 @@ const Menu = () => {
               })}
             </div>
           </div>
-            <div className="subtitle">
-              <h2>Jugos Naturales</h2>
-            </div>
+          <div className="subtitle">
+            <h2>Jugos Naturales</h2>
+          </div>
           <div className="wrapper-juice">
             <div className="wrapper-item-juice">
               {renderItemsFromDb({
@@ -283,9 +288,9 @@ const Menu = () => {
               })}
             </div>
           </div>
-            <div className="subtitle">
-              <h2>Bebidas</h2>
-            </div>
+          <div className="subtitle">
+            <h2>Bebidas</h2>
+          </div>
           <div className="wrapper-drinks">
             <div className="wrapper-item-drinks">
               {renderItemsFromDb({
@@ -295,12 +300,11 @@ const Menu = () => {
               })}
             </div>
           </div>
-            <div className="subtitle">
-              <h2>Cerveza</h2>
-            </div>
+          <div className="subtitle">
+            <h2>Cerveza</h2>
+          </div>
           <div className="wrapper-beef">
             <div className="wrapper-item-beef">
-              {" "}
               {renderItemsFromDb({
                 data,
                 type: "beef",

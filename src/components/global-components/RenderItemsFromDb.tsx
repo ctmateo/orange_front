@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { AddItemShoppingCar } from "./ShoppingCartUtils";
 
+// ... Otras importaciones
+
+// Añade las propiedades del componente
 interface Items {
   id: number;
   type: string;
@@ -11,12 +14,14 @@ interface Items {
   quantity: number;
 }
 
+// Añade las propiedades del componente
 interface RenderItemsFromDbProps {
   data: Items[];
   type: string;
   quantityColumns: number;
 }
 
+// Cambia la firma de la función para que sea un componente funcional
 const renderItemsFromDb: React.FC<RenderItemsFromDbProps> = ({
   data,
   type,

@@ -14,8 +14,12 @@ interface Items {
 
 let shoppingCartState: React.Dispatch<React.SetStateAction<Items[]>> | null =
   null;
+
+let shoppingCartState2: React.Dispatch<React.SetStateAction<Items[]>> | null =
+  null;
 let setBtnShopping: React.Dispatch<React.SetStateAction<boolean>>;
 
+export const StateCountItemsCart = React.createContext<Items[]>([]);
 
 export const setShoppingCartState = (
   setState: React.Dispatch<React.SetStateAction<Items[]>>
@@ -29,8 +33,11 @@ export const setBtnShoppingState = (
   setBtnShopping = setState;
 };
 
-
-
+export const setCountState = (
+  setState: React.Dispatch<React.SetStateAction<Items[]>>
+) => {
+  shoppingCartState2 = setState;
+};
 
 export const ShoppingCartWindow = () => {
   const [shoppingCart, setShoppingCart] = useState<Items[]>([]);
@@ -97,6 +104,12 @@ export const ShoppingCartWindow = () => {
   );
 };
 
+const CountItemFromCartShopping = () => {
+  const [shoppingCart, setShoppingCart] = useState<Items[]>([]);
+  setCountState(setShoppingCart);
+  return <div>{shoppingCart.length}</div>;
+};
+
 export const DeleteItemShoppingCar = (
   item: Items,
   setShoppingCart: React.Dispatch<React.SetStateAction<Items[]>>
@@ -112,12 +125,15 @@ export const AddItemShoppingCar = (
   setOpenDialog: React.Dispatch<React.SetStateAction<boolean>>,
   openDialog: boolean
 ) => {
-
   if (item.type === "burguer" || item.type === "hotdog") {
     setOpenDialog(!openDialog);
   }
 
-  if (shoppingCartState) {
+  if (shoppingCartState && shoppingCartState2) {
+    shoppingCartState2((prev) => {
+      const statusCartShopping2 = [...prev, { ...item, quantity: 1 }];
+      return statusCartShopping2;
+    });
     shoppingCartState((prevCart) => {
       const statusCartShopping = [...prevCart, { ...item, quantity: 1 }];
       return statusCartShopping;
@@ -126,27 +142,28 @@ export const AddItemShoppingCar = (
 };
 
 const sendListToWhatsapp = (list: Items[]) => {
-  const whatsappLink = 'https://wa.me/3143845669';
+  const whatsappLink = "https://wa.me/3143845669";
 
-  let message = 'Estuve navegando por mundodelicioso.com.co y me gustaría hacer un pedido para entrega a domicilio. ¿Podrían preparme lo siguiente?":\n\n';
+  let message =
+    'Estuve navegando por mundodelicioso.com.co y me gustaría hacer un pedido para entrega a domicilio. ¿Podrían preparme lo siguiente?":\n\n';
 
   for (let item of list) {
-    const line = `x${item.quantity} ${translateTypeId(item.type)} ${item.title}\n`;
+    const line = `x${item.quantity} ${translateTypeId(item.type)} ${
+      item.title
+    }\n`;
     message += line;
   }
 
   const encodedMessage = encodeURIComponent(message);
   const fullLink = `${whatsappLink}?text=${encodedMessage}`;
 
-  window.open(fullLink, '_blank');
+  window.open(fullLink, "_blank");
 };
-
-
-
-
 
 export const openShoppingCard = () => {
   setBtnShopping((statusBtnShopping) => {
     return !statusBtnShopping;
   });
 };
+
+export default CountItemFromCartShopping;
