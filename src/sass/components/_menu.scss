@@ -218,6 +218,7 @@ span {
   gap: 70px;
 }
 
+
 .card-combo {
   position: relative;
   width: 100%;
@@ -271,13 +272,8 @@ span {
   }
 }
 
-.wrapper-item-burguer {
-  order: -1;
-}
-
 .wrapper-burguer {
   display: flex;
-  flex-direction: column-reverse;
 }
 
 .wrapper-grilled,
@@ -408,6 +404,11 @@ span {
   .layout.active {
     justify-content: center;
   }
+  .wrapper-horn{
+    .card-combo{
+      display: none;
+    }
+  }
   h2 {
     font-size: 54px !important;
   }
@@ -444,7 +445,7 @@ span {
   .card-combo {
     height: 480px;
     margin-bottom: 50px;
-    background-color: $primarycolor !important;
+    background-color: $primarycolor;
 
     .combo-1 {
       display: none;

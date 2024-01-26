@@ -25,9 +25,12 @@ const renderItemsFromDb: React.FC<RenderItemsFromDbProps> = ({
   const [openDialog, setOpenDialog] = useState(true);
   const [animationClick, setAnimationClick] = useState<{ [key: number]: boolean }>({});
 
-  const elements = data
+  let elements = data
     .filter((item) => item.type === type)
-    .slice(0, quantityColumns === 2 ? 6 : 7);
+    .slice(0, quantityColumns === 2 ? 6 : 7)
+    if (type === 'burguer') {
+      elements = elements.reverse();
+    }
 
   const elementsForColumn = Math.ceil(elements.length / quantityColumns);
 

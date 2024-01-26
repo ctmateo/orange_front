@@ -142,38 +142,40 @@ const Menu = () => {
         {/* //Hamburguesas*/}
         <div className="wrapper-kitchen">
           <div className="space"></div>
-          <div className="double-grid">
-            <article className="wrapper-burguer">
-              <div className="subtitle">
-                <h2>Hamburguesas</h2>
-                <span>Artesanales</span>
-              </div>
+
+          <article className="wrapper-burguer">
+            <div className="double-grid">
               <div className="wrapper-item-burguer">
+                <div className="subtitle">
+                  <h2>Hamburguesas</h2>
+                  <span>Artesanales</span>
+                </div>
                 {renderItemsFromDb({
                   data,
                   type: "burguer",
                   quantityColumns: 1,
                 })}
               </div>
-            </article>
-            <div className="card-combo"></div>
-          </div>
-          <div className="double-grid">
-            <article className="wrapper-hotdog">
-              <div className="subtitle">
-                <h2>Hot dog</h2>
-                <span>Con queso</span>
-              </div>
+              <div className="card-combo"></div>
+            </div>
+          </article>
+
+          <article className="wrapper-hotdog">
+            <div className="double-grid">
               <div className="wrapper-item-hotdog">
+                <div className="subtitle">
+                  <h2>Hot dog</h2>
+                  <span>Con queso</span>
+                </div>
                 {renderItemsFromDb({
                   data,
                   type: "hotdog",
                   quantityColumns: 1,
                 })}
               </div>
-            </article>
-            <div className="card-combo"></div>
-          </div>
+              <div className="card-combo"></div>
+            </div>
+          </article>
         </div>
 
         <div className="wrapper-green">
