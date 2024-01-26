@@ -153,7 +153,7 @@ const sendListToWhatsapp = (list: Items[]) => {
   const whatsappLink = "https://wa.me/3143845669";
 
   let message =
-    'Estuve navegando por mundodelicioso.com.co y me gustaría hacer un pedido para entrega a domicilio. ¿Podrían preparme lo siguiente?":\n\n';
+    'Estuve en mundodelicioso.com.co y me gustaría hacer un pedido para entrega a domicilio. ¿Podrían preparme lo siguiente?":\n\n';
 
   for (let item of list) {
     const line = `x${item.quantity} ${translateTypeId(item.type)} ${

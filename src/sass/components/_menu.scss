@@ -11,24 +11,22 @@
     opacity: 1;
     padding-right: 64px;
     background-color: $primarycolor;
-    span{
+    span {
       color: $white-color;
     }
 
-    #back-1{
+    #back-1 {
       display: none;
     }
-    #back-2{
+    #back-2 {
       display: block;
     }
   }
 
-  span{
-    font-family: 'Bold';
+  span {
+    font-family: "Bold";
     color: $primarycolor;
   }
-
-
 }
 
 .back-page {
@@ -36,7 +34,6 @@
   align-items: center;
   gap: 14px;
   text-decoration: none;
-
 
   img {
     width: 34px;
@@ -47,10 +44,9 @@
     margin-right: 12px;
   }
 
-  #back-2{
+  #back-2 {
     display: none;
   }
-
 }
 
 h2 {
@@ -71,8 +67,8 @@ span {
   display: grid;
   grid-template-columns: repeat(3, auto);
   justify-content: space-between;
-  
-  .interline{
+
+  .interline {
     margin: 0;
     margin-bottom: 40px;
   }
@@ -89,35 +85,33 @@ span {
   flex-direction: column;
 }
 
-
 .layout {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1000; 
+  z-index: 1000;
   height: 100%;
   width: 100%;
   background-color: #2e0e0782;
-
 }
 .layout.active {
   display: flex;
 }
-.layout.desactive{
+.layout.desactive {
   display: none;
 }
 
-.pr{
+.pr {
   background-color: blue;
 }
 
-.pre-shop{
+.pre-shop {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1000; 
+  z-index: 1000;
   height: 80%;
   width: 60%;
   background-color: $white-color;
@@ -132,20 +126,19 @@ span {
 
 .title-menu {
   margin-left: 70px;
-  h1{
+  h1 {
     margin-top: 80px;
     color: $color-title;
     font-size: 100px;
     letter-spacing: 5px;
     font-family: "Hit";
     line-height: 32px;
-    span{
+    span {
       letter-spacing: 0;
-      font-family: 'Bold';
+      font-family: "Bold";
       color: $primarycolor;
     }
   }
-
 }
 
 .interline {
@@ -163,15 +156,15 @@ span {
   display: flex;
   flex-direction: column;
   margin-bottom: 38px;
-  span{
+  span {
     line-height: 10px;
-    font-family: 'Bold';
+    font-family: "Bold";
     color: $secondcolor;
   }
-  h2{
+  h2 {
     color: $color-title;
     font-size: 64px;
-    font-family: 'Black';
+    font-family: "Black";
   }
 }
 
@@ -200,8 +193,6 @@ span {
 }
 
 .wrapper-green {
-  padding: 0 0 150px 0;
-
   .border {
     border-radius: 28px;
     margin: 0 70px 0 70px;
@@ -308,21 +299,28 @@ span {
 }
 
 .drinks {
-  height: 100%;
-  width: 100%;
-  padding: 0 0 0 72px;
+  padding: 0 72px 0 72px;
 
-  .subtitle{
+  .wrapper-milkshake,
+  .wrapper-latte,
+  .wrapper-lemonade,
+  .wrapper-juice,
+  .wrapper-drinks,
+  .wrapper-beef {
+    padding-top: 150px;
+  }
+
+  .subtitle {
     margin: 0;
   }
+
   .column-0 {
     display: grid;
     justify-content: space-between;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, auto);
     width: 100%;
   }
 }
-
 
 .items-buy {
   height: 54px;
@@ -338,13 +336,13 @@ span {
   .buttons {
     display: flex;
     height: 54px;
-    width: 100%;
-    opacity: 0.1;
+    width: fit-content;
   }
 
   .buy-btn {
     cursor: pointer;
     padding: 10px;
+    width: 200px;
     font-size: 28px;
     font-family: "Medium";
     margin-right: 8px;
@@ -353,11 +351,51 @@ span {
     background-color: $btn-color-main;
     border-radius: 5px;
     color: $white-color;
+  
+    .new-text {
+      width: 200px;
+      display: none;
+    }
+  
+    &.active {
+      border: 1px solid green;
+      animation: btnAnimation ease-in-out 300ms forwards;
+  
+      @keyframes btnAnimation {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 100%;
+          background-color: green;
+        }
+      }
+  
+      .old-text {
+        display: none;
+      }
+  
+      .new-text {
+        display: block;
+      }
+  
+      &.revert {
+        animation: none; 
+        background-color: $btn-color-main;
+        .old-text {
+          display: block;
+        }
+        .new-text {
+          display: none;
+        }
+      }
+    }
   }
 }
 
+
 @media screen and (orientation: portrait) {
-  .window-shop{
+  .window-shop {
     width: 90%;
     height: 100%;
     border-radius: 0;
@@ -366,24 +404,23 @@ span {
   .layout.active {
     justify-content: center;
   }
-  h2{
-    font-size: 54px !important; 
+  h2 {
+    font-size: 54px !important;
   }
-  .items-buy{
-    .buttons{
+  .items-buy {
+    .buttons {
       opacity: 1;
     }
   }
 
-  .title-menu{
+  .title-menu {
     margin: 0;
-    h1{
+    h1 {
       margin-bottom: 80px;
     }
   }
 
-
-  .buy-btn{
+  .buy-btn {
     opacity: 1;
   }
 
@@ -395,35 +432,35 @@ span {
   .container-menu {
     padding: 40px;
   }
-  .double-grid{
+  .double-grid {
     display: grid;
     grid-template-columns: repeat(1, auto);
     padding: 0;
   }
-  .card-combo{
+  .card-combo {
     height: 480px;
     margin-bottom: 50px;
     background-color: $primarycolor !important;
 
-    .combo-1{
+    .combo-1 {
       display: none;
-    } 
-    .combo-2{
+    }
+    .combo-2 {
       display: none;
     }
   }
-  .card-publi-combo{
+  .card-publi-combo {
     height: 100%;
   }
-  .drinks{
+  .drinks {
     padding: 0;
-    .column-0{
+    .column-0 {
       display: grid;
       grid-template-columns: repeat(1, auto);
       padding: 0;
     }
 
-    h2  {
+    h2 {
       padding: 0;
     }
   }
@@ -433,9 +470,8 @@ span {
   }
 
   .wrapper-green {
-    .border  {
+    .border {
       margin: 0;
-      margin-bottom: 54px;
       border: none;
     }
   }
@@ -451,7 +487,7 @@ span {
     padding: 0;
   }
 
-  .wrapper-types-pizza  {
+  .wrapper-types-pizza {
     padding: 0;
     margin-bottom: 34px;
   }
@@ -474,7 +510,7 @@ span {
     margin-bottom: 54px;
   }
 
-  .border-less-padding{
+  .border-less-padding {
     margin-bottom: 54px;
   }
 }

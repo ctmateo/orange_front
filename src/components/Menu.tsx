@@ -11,7 +11,7 @@ import {
 import CountItemFromCartShopping from "./global-components/ShoppingCartUtils";
 
 import Footer from "./Footer";
- 
+
 interface Items {
   id: number;
   type: string;
@@ -26,7 +26,6 @@ const Menu = () => {
   const [data, setData] = useState<Items[]>([]);
 
   const [openDialog, setOpenDialog] = useState(false);
-
 
   useEffect(() => {
     const getItem = async () => {
@@ -50,19 +49,16 @@ const Menu = () => {
           className={`layout ${openDialog ? "active" : "desactive"}`}
         >
           {/* <div className="pre-shop"></div> */}
-
         </div>
         <div className="navegation">
-        {ShoppingCartWindow()}
+          {ShoppingCartWindow()}
           <div
             onClick={() => {
               openShoppingCard();
             }}
             className="shopping-cart"
           >
-            <div className="items-in-list">
-              {CountItemFromCartShopping()}
-            </div>
+            <div className="items-in-list">{CountItemFromCartShopping()}</div>
             <img src="icons/car.svg" alt="car" />
           </div>
         </div>
@@ -242,20 +238,21 @@ const Menu = () => {
           </div>
         </div>
         <div className="drinks">
-          <div className="subtitle">
-            <h2>Malteadas</h2>
-          </div>
           <div className="wrapper-milkshake">
+            <div className="subtitle">
+              <h2>Malteadas</h2>
+            </div>
             {renderItemsFromDb({
               data,
               type: "milkshake",
               quantityColumns: 1,
             })}
           </div>
-          <div className="subtitle">
-            <h2>Latte</h2>
-          </div>
+
           <div className="wrapper-latte">
+            <div className="subtitle">
+              <h2>Latte</h2>
+            </div>
             <div className="wrapper-item-latte">
               {renderItemsFromDb({
                 data,
@@ -264,10 +261,11 @@ const Menu = () => {
               })}
             </div>
           </div>
-          <div className="subtitle">
-            <h2>Limonadas</h2>
-          </div>
+
           <div className="wrapper-lemonade">
+            <div className="subtitle">
+              <h2>Limonadas</h2>
+            </div>
             <div className="wrapper-item-lemonade">
               {renderItemsFromDb({
                 data,
@@ -276,10 +274,11 @@ const Menu = () => {
               })}
             </div>
           </div>
-          <div className="subtitle">
-            <h2>Jugos Naturales</h2>
-          </div>
+
           <div className="wrapper-juice">
+            <div className="subtitle">
+              <h2>Jugos Naturales</h2>
+            </div>
             <div className="wrapper-item-juice">
               {renderItemsFromDb({
                 data,
@@ -288,10 +287,11 @@ const Menu = () => {
               })}
             </div>
           </div>
-          <div className="subtitle">
-            <h2>Bebidas</h2>
-          </div>
+
           <div className="wrapper-drinks">
+            <div className="subtitle">
+              <h2>Bebidas</h2>
+            </div>
             <div className="wrapper-item-drinks">
               {renderItemsFromDb({
                 data,
@@ -300,10 +300,11 @@ const Menu = () => {
               })}
             </div>
           </div>
-          <div className="subtitle">
-            <h2>Cerveza</h2>
-          </div>
+
           <div className="wrapper-beef">
+            <div className="subtitle">
+              <h2>Cerveza</h2>
+            </div>
             <div className="wrapper-item-beef">
               {renderItemsFromDb({
                 data,
