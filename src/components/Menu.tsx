@@ -41,20 +41,39 @@ const Menu = () => {
     getItem();
   }, []);
 
+  const openLayaout = () => {
+    openShoppingCard(), setOpenDialog(false);
+  };
+  const handleSizeMobile = () => {
+
+    console.log('handle')
+    let WIDTH_OF_WINDOW = 500;
+  
+    // Verificamos si el ancho de la ventana es menor que el umbral definido
+    if (window.innerWidth < WIDTH_OF_WINDOW) {
+      setOpenDialog(true);
+      openShoppingCard();
+      
+      // Asegúrate de que esta parte se está ejecutando correctamente
+      console.log('tamaño', window.innerWidth);
+      
+      return (
+        <div>
+          <h2>Hola</h2>
+        </div>
+      );
+    }
+  };
+
   return (
     <>
       <section className="container-menu">
-        <div
-          onClick={() => setOpenDialog(openDialog)}
-          className={`layout ${openDialog ? "active" : "desactive"}`}
-        >
-          {/* <div className="pre-shop"></div> */}
-        </div>
+        {handleSizeMobile()}
         <div className="navegation">
           {ShoppingCartWindow()}
           <div
             onClick={() => {
-              openShoppingCard();
+              openLayaout();
             }}
             className="shopping-cart"
           >

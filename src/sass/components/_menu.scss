@@ -97,13 +97,10 @@ span {
 }
 .layout.active {
   display: flex;
+  background-color: blue;
 }
 .layout.desactive {
   display: none;
-}
-
-.pr {
-  background-color: blue;
 }
 
 .pre-shop {
