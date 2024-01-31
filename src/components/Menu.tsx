@@ -45,17 +45,18 @@ const Menu = () => {
   const openLayaout = () => {
     openShoppingCard(), setOpenDialog(!openDialog);
   };
-  const handleSizeMobile = () => {
-    let WIDTH_OF_WINDOW = 500;
-    setIsMobile(() => {
-      const newIsMobile = window.innerWidth < WIDTH_OF_WINDOW;
-      console.log("Mobile is now", newIsMobile);
-      return newIsMobile;
-    });
-  };
-
   useEffect(() => {
+    const handleSizeMobile = () => {
+      let WIDTH_OF_WINDOW = 500;
+      setIsMobile(window.innerWidth < WIDTH_OF_WINDOW);
+    };
+
     window.addEventListener("resize", handleSizeMobile);
+    handleSizeMobile();
+
+    return () => {
+      window.removeEventListener("resize", handleSizeMobile);
+    };
   }, []);
   return (
     <>
