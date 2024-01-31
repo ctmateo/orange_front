@@ -1,15 +1,17 @@
 @import '../../abstracts/variables/variables.scss';
 
 .window-shop {
+  z-index: 3;
   padding: 30px;
   border-radius: 28px;
   background-color: $white-color;
   border: 1px solid $primarycolor;
   color: $secondcolor;
   margin-bottom: 24px;
-  width: 600px;
+  width: 100%;
   display: none;
-  height: 90vh;
+  height: 100vh;
+  min-height: 50%;
 
   p {
     font-family: "Semibold";

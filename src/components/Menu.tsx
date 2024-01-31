@@ -26,6 +26,7 @@ const Menu = () => {
   const [data, setData] = useState<Items[]>([]);
 
   const [openDialog, setOpenDialog] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const getItem = async () => {
@@ -45,32 +46,26 @@ const Menu = () => {
     openShoppingCard(), setOpenDialog(false);
   };
   const handleSizeMobile = () => {
-
-    console.log('handle')
     let WIDTH_OF_WINDOW = 500;
-  
-    // Verificamos si el ancho de la ventana es menor que el umbral definido
-    if (window.innerWidth < WIDTH_OF_WINDOW) {
-      setOpenDialog(true);
-      openShoppingCard();
-      
-      // Asegúrate de que esta parte se está ejecutando correctamente
-      console.log('tamaño', window.innerWidth);
-      
-      return (
-        <div>
-          <h2>Hola</h2>
-        </div>
-      );
-    }
+    setIsMobile(() => {
+      const newIsMobile = window.innerWidth < WIDTH_OF_WINDOW;
+      console.log("Mobile is now", isMobile);
+      return newIsMobile;
+    });
   };
 
+  useEffect(() => {
+    window.addEventListener("resize", handleSizeMobile);
+
+  }, []);
   return (
     <>
       <section className="container-menu">
-        {handleSizeMobile()}
+      <div className={`layaout ${openDialog ? 'active' : 'desactive'}`}>
+          </div>
         <div className="navegation">
-          {ShoppingCartWindow()}
+            {ShoppingCartWindow()}
+
           <div
             onClick={() => {
               openLayaout();

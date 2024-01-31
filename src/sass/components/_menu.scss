@@ -79,27 +79,27 @@ span {
   bottom: 0;
   right: 0;
   margin: 0 40px 40px 0;
-  z-index: 1;
+  z-index: 1000;
   display: flex;
   align-items: flex-end;
   flex-direction: column;
 }
 
-.layout {
+.layaout {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1000;
+  z-index: 1;
   height: 100%;
   width: 100%;
   background-color: #2e0e0782;
 }
-.layout.active {
+.layaout.active {
   display: flex;
   background-color: blue;
 }
-.layout.desactive {
+.layaout.desactive {
   display: none;
 }
 
@@ -398,7 +398,7 @@ span {
     border-radius: 0;
   }
 
-  .layout.active {
+  .layaout.active {
     justify-content: center;
   }
   .wrapper-horn{
