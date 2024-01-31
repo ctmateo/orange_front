@@ -25,7 +25,7 @@ interface Items {
 const Menu = () => {
   const [data, setData] = useState<Items[]>([]);
 
-  const [openDialog, setOpenDialog] = useState(false);
+  const [openDialog, setOpenDialog] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -43,29 +43,27 @@ const Menu = () => {
   }, []);
 
   const openLayaout = () => {
-    openShoppingCard(), setOpenDialog(false);
+    openShoppingCard(), setOpenDialog(!openDialog);
   };
   const handleSizeMobile = () => {
     let WIDTH_OF_WINDOW = 500;
     setIsMobile(() => {
       const newIsMobile = window.innerWidth < WIDTH_OF_WINDOW;
-      console.log("Mobile is now", isMobile);
+      console.log("Mobile is now", newIsMobile);
       return newIsMobile;
     });
   };
 
   useEffect(() => {
     window.addEventListener("resize", handleSizeMobile);
-
   }, []);
   return (
     <>
       <section className="container-menu">
-      <div className={`layaout ${openDialog ? 'active' : 'desactive'}`}>
-          </div>
         <div className="navegation">
+          <div className={`shopping-size ${isMobile ? "layaout" : ""}`}>
             {ShoppingCartWindow()}
-
+          </div>
           <div
             onClick={() => {
               openLayaout();
