@@ -61,7 +61,7 @@ const Menu = () => {
     <>
       <section className="container-menu">
         <div className="navegation">
-          <div className={`shopping-size ${isMobile ? "layaout" : ""}`}>
+          <div className={`shopping-size ${isMobile && openDialog ? "layaout" : ""}`}>
             {ShoppingCartWindow()}
           </div>
           <div
