@@ -52,7 +52,7 @@
 h2 {
   text-transform: uppercase;
   font-family: "Bold";
-  font-size: 48px;
+  font-size: 42px;
   color: #4caf50;
 }
 
@@ -105,6 +105,9 @@ span {
 
 .shopping-size.layaout{
   border: none;
+  .window-shop{
+    border-radius: 0;
+  }
 }
 
 .pre-shop {

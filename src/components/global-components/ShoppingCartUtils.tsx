@@ -42,7 +42,7 @@ export const setCountState = (
 
 export const ShoppingCartWindow = () => {
   const [shoppingCart, setShoppingCart] = useState<Items[]>([]);
-  const [statusBtnShopping, setBtn] = useState(true);
+  const [statusBtnShopping, setBtn] = useState(false);
 
   setShoppingCartState(setShoppingCart);
   setBtnShoppingState(setBtn);

@@ -25,7 +25,7 @@ interface Items {
 const Menu = () => {
   const [data, setData] = useState<Items[]>([]);
 
-  const [openDialog, setOpenDialog] = useState(true);
+  const [openDialog, setOpenDialog] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -58,6 +58,7 @@ const Menu = () => {
       window.removeEventListener("resize", handleSizeMobile);
     };
   }, []);
+  
   return (
     <>
       <section className="container-menu">
