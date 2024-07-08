@@ -4,8 +4,11 @@ const Footer = () => {
     <>
       <footer>
         <div className="method_pay">
-          <p>©MundoDelicioso  2024</p>
+          <p>©TODOS LOS DERECHOS RESERVADOS</p>
         </div>
+        <p>
+        Cartelapapeleria.com S.A.S NIT 10001.204.138-9. Cr 5 #11-54 Local 3, Tocancipá, Cundinamarca
+        </p>
         <div className="bussines"></div>
       </footer>
     </>

@@ -34,7 +34,6 @@
     text-decoration: none;
     color: $primarycolor;
     font-size: 24px;
-    font-family: 'Bold', sans-serif;
   }
 
   .link-items{
@@ -43,6 +42,7 @@
     border-radius: 10px;
     transition: background-color 0.3s ease;
     margin: 1px;
+    font-family: 100px;
     &:hover{
       margin: 0;
       border: 1px solid $primarycolor;
@@ -62,12 +62,11 @@
     padding: 0;
     text-decoration: none;
     color: $primarycolor;
-    font-family: 'Bold';
-    font-size: 20px;
 
     span {
       margin: 0;
       padding: 0;
+      font-size: 24px;
     }
   }
 

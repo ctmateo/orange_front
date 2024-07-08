@@ -66,7 +66,7 @@ const Navbar = () => {
       <nav className="container-nav">
         <div className="nav">
           <div className="logo">
-            <img src="/images/logo.svg" alt="MundoDelicioso" />
+
           </div>
           <div className="items">
             <Link
@@ -76,43 +76,28 @@ const Navbar = () => {
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
-              Menú
+              Todos los articulos
             </Link>
             <Link
               className="link-items"
               to="pizzas"
-              data-item="event"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
             >
-              Evento Jurásico
+              Cotiza tus articulos
             </Link>
             <Link
               className="link-items"
               to=""
-              data-item="service"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
             >
               Servicios
-            </Link>
-            <Link
-              className="link-items"
-              to=""
-              data-item="promo"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-            >
-              Combos
             </Link>
           </div>
         </div>
         <div className="profile-items">
           <Link className="link link-sign-up" to="">
-            <span>Registrate ahora</span>
+            <span>Crear cuenta</span>
           </Link>
-          <Link className="link link-sign-in" to="">
-            <span>Ingresar</span>
+          <Link className="link link-sign-in" to="signin">
+            <span>Ingresa</span>
           </Link>
         </div>
       </nav>

@@ -7,7 +7,7 @@ const Home = () => {
           <div className="header-promo"></div>
         </section>
         <div className="title">
-          <h1>Hamburguesas</h1>
+          <h1>Lo más vendido</h1>
         </div>
         <section className="wrap-container-card">
           <article className="card">
